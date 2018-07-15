@@ -25,7 +25,13 @@ configList = list(configReader)
 
 spacePressed = False
 mousePressed = False
+hPressed = False
+upPressed = False
+downPressed = False
+leftPressed = False
+rightPressed = False
 
+level = 0
 
 # CONSTANTS
 
@@ -36,19 +42,34 @@ FPS = 60
 # PYGAME OBJECTS
 
 pygame.init()
-surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT),pygame.RESIZABLE)
 pygame.display.set_caption('STARLINE')
 clock = pygame.time.Clock()
 pygame.font.init()
 textFont = pygame.font.SysFont("Becker", 40)
+levelTitleFont = pygame.font.SysFont("Becker", 30)
 
 # LOAD IMAGES
 
 
-# FUNCTIONS
+#FUNCTIONS
+
+# GENERAL FUNCTIONhhS
+
+def resetPressed():
+    global spacePressed, mousePressed, hPressed, upPressed, downPressed, leftPressed, rightPressed
+    spacePressed = False
+    mousePressed = False
+    hPressed = False
+    upPressed = False
+    downPressed = False
+    leftPressed = False
+    rightPressed = False
+
+# STATE FUNCTIONS
 
 def quitGame():
-    cofigFile.close()
+    configFile.close()
     pygame.quit()
     sys.exit()
     
@@ -58,12 +79,27 @@ def drawStage():
 
 def welcomeScreen():
     global surface
-    renderedText = textFont.render('Pantalla de inicio. Pulsa espacio o presiona el ratón', 1, (255,255,255))
+    renderedText = textFont.render('Pantalla de inicio. Pulsa espacio para empezar o \"h\" para ayuda', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
+
+def helpScreen():
+    global surface
+    renderedText = textFont.render('Te estoy ayudando', 1, (255,255,255))
+    surface.blit(renderedText, (100, 100))
+
     
 def levelSelector():
-    global surface
-    renderedText = textFont.render('Selector de nivel. Presiona el ratón', 1, (255,255,255))
+    global surface, configList, level
+    if downPressed and level < len(configList) - 1 :
+        level += 1
+        resetPressed()
+    elif upPressed and level > 0 :
+        level -= 1
+        resetPressed()
+    if configList[level][3] == "True" :
+        renderedText = levelTitleFont.render(configList[level][1], 1, (0,255,0))
+    else :
+        renderedText = levelTitleFont.render(configList[level][1], 1, (255,0,0))
     surface.blit(renderedText, (100, 100))
 
 def startAnimation():
@@ -80,6 +116,7 @@ def inGame():
     global surface
     renderedText = textFont.render('Jugando... Presiona el ratón', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
+    
 
 # MAIN LOOP
 
@@ -92,6 +129,17 @@ while True:
                 quitGame()
             if event.key == pygame.K_SPACE :
                 spacePressed = True
+            if event.key == pygame.K_h :
+                hPressed = True
+            if event.key == pygame.K_UP:
+                upPressed = True
+            if event.key == pygame.K_DOWN:
+                downPressed = True
+            if event.key == pygame.K_RIGHT:
+                rightPressed = True
+            if event.key == pygame.K_LEFT:
+                leftPressed = True
+            
         if event.type == pygame.MOUSEBUTTONDOWN:
             mousePressed = True
         if event.type == GAME_GLOBALS.QUIT:
@@ -100,37 +148,41 @@ while True:
     if state == 0 :
         welcomeScreen()
         if spacePressed or mousePressed:
-            state += 1
-            spacePressed = False
-            mousePressed = False
+            state = 1
+            resetPressed()
+        if hPressed :
+            state = 5
+            resetPressed()
             
-    if state == 1:
+    if state == 1: # LeveSelector
         levelSelector()
-        if spacePressed or mousePressed:
+        if (spacePressed or mousePressed) and configList[level][3]=='True':
             state += 1
-            spacePressed = False
-            mousePressed = False
+            resetPressed()
             
     if state == 2:
         startAnimation()
         if spacePressed or mousePressed:
             state += 1
-            spacePressed = False
-            mousePressed = False
+            resetPressed()
     
     if state == 3:
         story()
         if spacePressed or mousePressed:
             state += 1
-            spacePressed = False
-            mousePressed = False
+            resetPressed()
     
     if state == 4:
         inGame()
         if spacePressed or mousePressed:
             state = 1
-            spacePressed = False
-            mousePressed = False
+            resetPressed()
+    
+    if state == 5:
+        helpScreen()
+        if spacePressed or mousePressed:
+            state = 0
+            resetPressed()
     
     
     clock.tick(FPS)
