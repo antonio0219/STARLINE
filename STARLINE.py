@@ -51,6 +51,8 @@ levelTitleFont = pygame.font.SysFont("Becker", 30)
 
 # LOAD IMAGES
 
+title = pygame.image.load("assets/images/background/STARLINE.png")
+star = pygame.image.load("assets/images/background/star.png")
 
 #FUNCTIONS
 
@@ -75,12 +77,14 @@ def quitGame():
     
 def drawStage():
     global surface
-    surface.fill((0,0,0))
+    surface.fill((30,30,30))
 
 def welcomeScreen():
     global surface
     renderedText = textFont.render('Pantalla de inicio. Pulsa espacio para empezar o \"h\" para ayuda', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
+    surface.blit(title, (130,235))
+    surface.blit(star, (600,185))
 
 def helpScreen():
     global surface
