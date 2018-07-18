@@ -51,9 +51,9 @@ levelTitleFont = pygame.font.SysFont("Becker", 30)
 
 # LOAD IMAGES
 
-titleImage = pygame.image.load("assets/images/background/STARLINE.png")
-starImage = pygame.image.load("assets/images/background/star.png")
-angleStar = 0
+title = pygame.image.load("assets/images/background/STARLINE.png")
+star = pygame.image.load("assets/images/background/star.png")
+skyImage = pygame.image.load("assets/images/background/sky.png")
 
 #FUNCTIONS
 
@@ -78,52 +78,53 @@ def quitGame():
     
 def drawStage():
     global surface
-    surface.fill((30,30,30))
+    surface.blit(skyImage, (0,0))
 
 def welcomeScreen():
-    global surface, angleStar
+    global surface
+    drawStage()
     renderedText = textFont.render('Pantalla de inicio. Pulsa espacio para empezar o \"h\" para ayuda', 1, (255,255,255))
-    angleStar += 2
-    angleStar = angleStar % 360
-    imageToDraw = pygame.transform.rotate(starImage,angleStar)
-    rect = imageToDraw.get_rect()
-    rect.center = (625,220)
-    surface.blit(imageToDraw,rect)
     surface.blit(renderedText, (100, 100))
-    surface.blit(titleImage, (130,235))
+    surface.blit(title, (130,235))
+    surface.blit(star, (600,185))
 
 def helpScreen():
     global surface
+    drawStage()
     renderedText = textFont.render('Te estoy ayudando', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
 
     
 def levelSelector():
-    global surface, configList, level
-    if downPressed and level < len(configList) - 1 :
-        level += 1
-        resetPressed()
-    elif upPressed and level > 0 :
-        level -= 1
-        resetPressed()
-    if configList[level][3] == "True" :
-        renderedText = levelTitleFont.render(configList[level][1], 1, (0,255,0))
-    else :
-        renderedText = levelTitleFont.render(configList[level][1], 1, (255,0,0))
-    surface.blit(renderedText, (100, 100))
+	global surface, configList, level
+	drawStage()
+	if downPressed and level < len(configList) - 1 :
+		level += 1
+		resetPressed()
+	elif upPressed and level > 0 :
+		level -= 1
+		resetPressed()
+	if configList[level][3] == "True" :
+		renderedText = levelTitleFont.render(configList[level][1], 1, (0,255,0))
+	else :
+		renderedText = levelTitleFont.render(configList[level][1], 1, (255,0,0))
+	surface.blit(renderedText, (100, 100))
 
 def startAnimation():
     global surface
+    drawStage()
     renderedText = textFont.render('Animacion de inicio de nivel. Presiona el ratón', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
     
 def story():
     global surface
+    drawStage()
     renderedText = textFont.render('Diálogos. Presiona el ratón', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
     
 def inGame():
     global surface
+    drawStage()
     renderedText = textFont.render('Jugando... Presiona el ratón', 1, (255,255,255))
     surface.blit(renderedText, (100, 100))
     
