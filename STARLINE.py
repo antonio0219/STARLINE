@@ -26,7 +26,6 @@ configReader = csv.reader(configFile, delimiter=';')
 configList = list(configReader)
 
 spacePressed = False
-mousePressed = False
 hPressed = False
 upPressed = False
 downPressed = False
@@ -78,9 +77,8 @@ skyImage = pygame.image.load("assets/images/background/sky.png")
 # GENERAL FUNCTIONhhS
 
 def resetPressed():
-    global spacePressed, mousePressed, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel
+    global spacePressed, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel
     spacePressed = False
-    mousePressed = False
     hPressed = False
     
     upPressed = False
@@ -177,7 +175,7 @@ def chooseShip():
     
 def music(i):
     if i == 'menu':
-        pygame.mixer.music.load('assets/music/Chronometry.mp3')
+        pygame.mixer.music.load('assets/music/Chronometry.ogg')
         pygame.mixer.music.play(-1)
     
      
@@ -214,14 +212,12 @@ while True:
             if event.key == pygame.K_LEFT:
                 leftPressed = False
           
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mousePressed = True
         if event.type == GAME_GLOBALS.QUIT:
             quitGame()
  
     if state == 0 :
         welcomeScreen()
-        if spacePressed or mousePressed:
+        if spacePressed:
             state = 1
             resetPressed()
         if hPressed :
@@ -230,7 +226,7 @@ while True:
             
     if state == 1: # LeveSelector
         levelSelector()
-        if (spacePressed or mousePressed) and configList[level][3]=='True':
+        if spacePressed and configList[level][3]=='True':
             state += 1
             resetPressed()
             levelFile = open('assets/levels/'+configList[level][0])
@@ -240,13 +236,13 @@ while True:
             
     if state == 2: 
         startAnimation()
-        if spacePressed or mousePressed:
+        if spacePressed:
             state += 1
             resetPressed()
 
     if state == 3:
         chooseShip()
-        if spacePressed or mousePressed:
+        if spacePressed:
             state += 1
             resetPressed()
             player = ship.doubleShip(type1, Xo1, Yo1, type2, Xo2, Yo2, VELSHIP, pygame)
@@ -269,7 +265,7 @@ while True:
     
     if state == 5:
         helpScreen()
-        if spacePressed or mousePressed:
+        if spacePressed:
             state = 0
             resetPressed()
     
