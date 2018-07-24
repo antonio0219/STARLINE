@@ -8,14 +8,17 @@ Created on Wed Jul 18 19:04:47 2018
 
 class enemy:
     
-    def __init__(self, type, xo, yo, vx, vy, pygame):
+    def __init__(self, type, xo, yo, vx, vy, angularSpeed, pygame):
         self.type = type
         self.x = xo
         self.y = yo
         self.vx = vx
         self.vy = vy
+        self.angularSpeed = angularSpeed
+        
         if self.type=='alien':
             self.withRotation = pygame.image.load("assets/images/enemies/alien.png")
+            self.cockpit = pygame.image.load("assets/images/enemies/cockpit.png")
         else:
             self.withRotation = pygame.image.load("assets/images/enemies/bomb.png")
         self.angle = 0
@@ -29,14 +32,18 @@ class enemy:
         rect = imageToDraw.get_rect()
         rect.center = (self.x,self.y)
         surface.blit(imageToDraw,rect)    
+        if self.type == 'alien':
+            rect = self.cockpit.get_rect()
+            rect.center = (self.x,self.y)
+            surface.blit(self.cockpit,rect)
         
     def move(self):
         self.x += self.vx
         self.y += self.vy
-        self.angle += 2
+        self.angle += self.angularSpeed
         self.angle = self.angle % 360
     
-    def out(self,WINDOW_WIDTH,WINDOW_HEIGHT):
+    def out(self,WINDOW_WIDTH,WINDOW_HEIGHT): # If you create an enemy more than 100 px out of the screen it will desapear
         if self.x < -100 or self.x > WINDOW_WIDTH+100 or self.y < -100 or self.y > WINDOW_HEIGHT + 100:
             toReturn = True
         else:
