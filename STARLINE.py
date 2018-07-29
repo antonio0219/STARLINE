@@ -49,10 +49,9 @@ WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 700
 FPS = 60
 Xo1 = 300 
-Yo1 = 100
-Xo2 = 300
-Yo2 = 700
-VELSHIP = 10
+Yo1 = 500
+Xo2 = 600
+Yo2 = 500
 
 # PYGAME OBJECTS
 
@@ -77,7 +76,7 @@ skyImage = pygame.image.load("assets/images/background/sky.png")
 # GENERAL FUNCTIONhhS
 
 def resetPressed():
-    global spacePressed, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel
+    global spacePressed, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel, aPressed, dPressed, sPressed, wPressed
     spacePressed = False
     hPressed = False
     
@@ -159,10 +158,12 @@ def inGame():
         enemy.move()
         enemy.draw(surface)
         enemy.hablar()
+        enemy.dead(player.getPos()[0],player.getPos()[1])
         if enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) :
             enemiesList.pop(i)
-    
+    player.move(WINDOW_WIDTH, WINDOW_HEIGHT)
     player.draw(surface)
+
 
 def chooseShip():
     global type1, type2, surface
@@ -202,6 +203,14 @@ while True:
                 rightPressed = True
             if event.key == pygame.K_LEFT:
                 leftPressed = True
+            if event.key == pygame.K_a:
+                aPressed = True
+            if event.key == pygame.K_d:
+                dPressed = True
+            if event.key == pygame.K_w:
+                wPressed = True
+            if event.key == pygame.K_s:
+                sPressed = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
                 upPressed = False
@@ -211,7 +220,14 @@ while True:
                 rightPressed = False
             if event.key == pygame.K_LEFT:
                 leftPressed = False
-          
+            if event.key == pygame.K_a:
+                aPressed = False
+            if event.key == pygame.K_d:
+                dPressed = False
+            if event.key == pygame.K_w:
+                wPressed = False
+            if event.key == pygame.K_s:
+                sPressed = False
         if event.type == GAME_GLOBALS.QUIT:
             quitGame()
  
@@ -245,19 +261,29 @@ while True:
         if spacePressed:
             state += 1
             resetPressed()
-            player = ship.doubleShip(type1, Xo1, Yo1, type2, Xo2, Yo2, VELSHIP, pygame)
+            player = ship.doubleShip(type1, Xo1, Yo1, type2, Xo2, Yo2, pygame)
             startTime = GAME_TIME.get_ticks()
     
     if state == 4:
         inGame()
         if upPressed:
-            player.move('up', 'none')
+            player.vel('up', 'none')
         if rightPressed:
-            player.move('right', 'none')
+            player.vel('right', 'none')
         if leftPressed:
-            player.move('left', 'none')
+            player.vel('left', 'none')
         if downPressed:
-            player.move('down', 'none')
+            player.vel('down', 'none')
+            
+        if aPressed:
+            player.vel('none', 'left')
+        if dPressed:
+            player.vel('none', 'right')
+        if sPressed:
+            player.vel('none', 'down')
+        if wPressed:
+            player.vel('none', 'up')
+            
         if nextLevel:
             state = 1
             resetPressed()

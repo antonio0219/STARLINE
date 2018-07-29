@@ -5,6 +5,7 @@ Created on Wed Jul 18 19:04:47 2018
 
 @author: AMS, FMC
 """
+import math 
 
 class enemy:
     
@@ -15,6 +16,7 @@ class enemy:
         self.vx = vx
         self.vy = vy
         self.angularSpeed = angularSpeed
+        self.radius = 25
         
         if self.type=='alien':
             self.withRotation = pygame.image.load("assets/images/enemies/alien.png")
@@ -50,4 +52,19 @@ class enemy:
             toReturn = False
         return toReturn
 
+    def dead (self, pos1, pos2):
+        if pos2[0]-pos1[0]:
+            dist = abs(self.x-pos1[0])
+        else:
+            a = (pos2[1]-pos1[1])/(pos2[0]-pos1[0])
+            b = pos1[1]-a*pos1[0]
+            dist = abs(a*self.x-self.y+b)/math.sqrt(a**2+1)
+#        if pos2[0]>pos1[0]:
+#            upx = pos2[0]
+#            downx = pos1[0]
+#        else:
+#            upx = pos1[0]
+#            downx = pos2[0]
+        
+        print("Mi distancia a la línea: "+ str(dist))
         
