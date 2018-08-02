@@ -142,7 +142,7 @@ def startAnimation():
         
 def inGame():
     global surface, levelList, enemiesList, nextLevel
-    print('entrado ingame')
+    #print('entrado ingame')
     print(len(levelList))
     if len(levelList)>0 :
         if (GAME_TIME.get_ticks() - startTime > int(levelList[0][0])):
@@ -156,10 +156,10 @@ def inGame():
 
     for i,enemy in enumerate(enemiesList):
         enemy.move()
-        enemy.draw(surface)
+        enemy.draw(surface, GAME_TIME)
         enemy.hablar()
-        enemy.dead(player.getPos()[0],player.getPos()[1])
-        if enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) :
+        enemy.dead(player.getPos()[0],player.getPos()[1], GAME_TIME)
+        if enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) or enemy.isdead():
             enemiesList.pop(i)
     player.move(WINDOW_WIDTH, WINDOW_HEIGHT)
     player.draw(surface)
