@@ -16,14 +16,39 @@ class ship :
         self.vy = 0
         self.a = 1
         self.limvel = 30
+        self.deadTime = 0
+        self.numberImage = 0
+        self.state = 'living'
+
+        self.explosionImage = [
+            pygame.image.load("assets/images/explosion/expl1.png"),
+            pygame.image.load("assets/images/explosion/expl2.png"),
+            pygame.image.load("assets/images/explosion/expl3.png"),
+            pygame.image.load("assets/images/explosion/expl4.png"),
+            pygame.image.load("assets/images/explosion/expl5.png"),
+            pygame.image.load("assets/images/explosion/expl6.png"),
+            pygame.image.load("assets/images/explosion/expl7.png"),
+            pygame.image.load("assets/images/explosion/expl8.png"),
+            pygame.image.load("assets/images/explosion/expl9.png")                
+            ]
         
     def getPos(self):
         return (self.x, self.y)        
         
-    def draw(self, surface):
-        rect = self.shipImage.get_rect()
+    def draw(self, surface, GAME_TIME):
+        if self.state == 'living':
+            imageToDraw = self.shipImage
+        else:
+            imageToDraw = self.explosionImage[self.numberImage]
+            if GAME_TIME.get_ticks()-self.deadTime >= 40:
+                if self.numberImage == 8:
+                    self.state = 'dead'
+                if self.numberImage < 8 :
+                    self.numberImage += 1
+                self.deadTime = GAME_TIME.get_ticks()
+        rect = imageToDraw.get_rect()
         rect.center = (self.x,self.y)
-        surface.blit(self.shipImage,rect)
+        surface.blit(imageToDraw,rect)
         
     def vel(self,direction):
         if direction=='up' and self.vy > -self.limvel:
@@ -61,10 +86,24 @@ class ship :
             self.vy -= self.a/2
         elif self.vy > 0:
             self.vy += self.a/2
-        
-        
-    def getPos(self):
-        return (self.x, self.y)
+
+    def isDead(self):
+        return self.state == 'dead'
+    
+    def isBlowUp(self):
+        return self.state == 'blowup'
+    
+    def kill(self, time):
+        self.deadTime = time
+        self.state = 'blowup'
+    
+    def goTo(self, x, y):
+        self.x = x
+        self.y = y
+        self.numberImage = 0
+    
+    def revive(self):
+        self.state = 'living'
         
 class doubleShip :
     def __init__(self, type1, xo1, yo1, type2, xo2, yo2, pygame):
@@ -73,8 +112,9 @@ class doubleShip :
         self.colorLine = (255, 255, 255)
         self.frec = 1/5
         self.amp = 5
-    
-    def draw(self, surface):
+        self.displacements = ((0,-25),(0,25), (25,25), (-25,25), (-12,0), (12,0))
+
+    def draw(self, surface, GAME_TIME):
         x1 = int(self.ship1.getPos()[0])
         y1 = int(self.ship1.getPos()[1])
         x2 = int(self.ship2.getPos()[0])
@@ -102,8 +142,8 @@ class doubleShip :
                 surface.set_at((int(x1+((x2-x1)/(y2-y1))*(i-y1) + self.amp*math.sin(i*self.frec)),i),self.colorLine)
                 surface.set_at((int(x1+((x2-x1)/(y2-y1))*(i-y1) + self.amp*math.cos(i*self.frec)),i),(255,0,0))
                 surface.set_at((int(x1+((x2-x1)/(y2-y1))*(i-y1)),i),(255,255,0))
-        self.ship1.draw(surface)
-        self.ship2.draw(surface)
+        self.ship1.draw(surface, GAME_TIME)
+        self.ship2.draw(surface, GAME_TIME)
     
     def vel (self, direction1, direction2):
         self.ship1.vel(direction1)
@@ -115,5 +155,28 @@ class doubleShip :
         
     def getPos(self):
         return (self.ship1.getPos(),self.ship2.getPos())
-                
     
+    def getPoints(self):
+        toReturn = []
+        for desp in self.displacements:
+            toReturn.append((self.ship1.getPos()[0]+desp[0], self.ship1.getPos()[1]+desp[1]))
+            toReturn.append((self.ship2.getPos()[0]+desp[0], self.ship2.getPos()[1]+desp[1]))
+        return toReturn
+    
+    def toDie(self, GAME_TIME):
+        self.ship1.kill(GAME_TIME.get_ticks())
+        self.ship2.kill(GAME_TIME.get_ticks())
+        
+    def isDead(self):
+        return self.ship1.isDead() or self.ship2.isDead()
+    
+    def goTo(self, Xo1, Yo1, Xo2, Yo2):
+        self.ship1.goTo(Xo1, Yo1)
+        self.ship2.goTo(Xo2, Yo2)
+    
+    def isBlowUp(self):
+        return self.ship1.isBlowUp() or self.ship2.isBlowUp()
+
+    def revive(self):
+        self.ship1.revive()
+        self.ship2.revive()

@@ -17,6 +17,7 @@ class enemy:
         self.vy = vy
         self.angularSpeed = angularSpeed
         self.radius = 25
+        self.kill = False
         
         if self.type=='alien':
             self.withRotation = pygame.image.load("assets/images/enemies/alien.png")
@@ -48,7 +49,7 @@ class enemy:
             imageToDraw = self.pygame.transform.rotate(self.withRotation,self.angle)
         else:
             imageToDraw = self.explosionImage[self.numberImage]
-            if self.deadTime >= 500:
+            if GAME_TIME.get_ticks()-self.deadTime >= 10:
                 if self.numberImage == 8:
                     self.state = 'dead'
                 if self.numberImage < 8 :
@@ -75,7 +76,14 @@ class enemy:
             toReturn = False
         return toReturn
 
-    def dead (self, pos1, pos2, GAME_TIME):
+    def dead (self, pos1, pos2, pointsShips, GAME_TIME):
+        for point in pointsShips:
+            if math.sqrt( (self.x-point[0])**2 + (self.y-point[1])**2 ) < self.radius:
+                if self.state == 'living' :
+                   self.state = 'blowup'
+                   self.deadTime = GAME_TIME.get_ticks()
+                   print ('tengo que morir, noooooo') 
+                   self.kill = True
         if pos2[0]==pos1[0]:
             dist = abs(self.x-pos1[0])
         else:
@@ -95,19 +103,50 @@ class enemy:
             upy = pos1[1]
             downy = pos2[1]
         if self.x-self.radius<upx and self.x+self.radius>downx:
-            print ('estoy dentro en x')
+            #print ('estoy dentro en x')
             if self.y-self.radius<upy and self.y+self.radius>downy:
-                print ('estoy dentro en y')
+                #print ('estoy dentro en y')
                 if dist <= self.radius and self.state == 'living':
                     self.state = 'blowup'
                     self.deadTime = GAME_TIME.get_ticks()
-                    print ('tengo que morir, noooooo')
-        print ('distancia :' + str(dist))
+                    #print ('tengo que morir, noooooo')
+                    if self.type == 'bomb' :
+                        self.kill = True
+        #print ('distancia :' + str(dist))
 
     def isdead(self):
-        if self.state=='dead':
-            return True
-        else:
-            return False
+        return (self.state == 'dead', self.kill)
+    
+    def isAlien(self):
+        return self.type == 'alien'
                     
+class message:
+    
+    def __init__(self, text, to, duration, x, y, timeCharacter, pygame):
+        self.x = int(x)
+        self.y = int(y)
+        self.messageImage = pygame.image.load("assets/images/background/messageImage.png")
+        self.text = text
+        self.to = to
+        self.duration = int(duration)
+        self.timeCharacter = int(timeCharacter)
+        self.toDraw = ''
+        self.lastCharacterTime = 0
         
+    def draw(self, surface, GAME_TIME, textFont, pygame):
+        if len(self.text) > 0 :
+            if GAME_TIME.get_ticks()-self.lastCharacterTime > self.timeCharacter :
+                self.toDraw += self.text[0] # Añado la primera letra a la palabra a dibujar
+                self.text = self.text[1:] # Quito la primera letra
+                self.lastCharacterTime = GAME_TIME.get_ticks()
+        rect = self.messageImage.get_rect()
+        rect.center = (self.x,self.y)
+        surface.blit(self.messageImage,rect)
+        renderedText = textFont.render(self.toDraw, 1, (255,255,255))
+        rect = renderedText.get_rect()
+        rect.center = (self.x,self.y)
+        surface.blit(renderedText,rect)
+
+    def isDead(self, GAME_TIME):
+        return GAME_TIME.get_ticks()- self.to > self.duration
+            
