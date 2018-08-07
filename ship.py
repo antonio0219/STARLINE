@@ -19,6 +19,8 @@ class ship :
         self.deadTime = 0
         self.numberImage = 0
         self.state = 'living'
+        self.pygame = pygame
+
 
         self.explosionImage = [
             pygame.image.load("assets/images/explosion/expl1.png"),
@@ -35,7 +37,7 @@ class ship :
     def getPos(self):
         return (self.x, self.y)        
         
-    def draw(self, surface, GAME_TIME):
+    def draw(self, surface, GAME_TIME): # scale can be 1 (real size) or 2 (dobule size).
         if self.state == 'living':
             imageToDraw = self.shipImage
         else:

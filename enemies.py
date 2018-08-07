@@ -10,7 +10,7 @@ import math
 class enemy:
     
     def __init__(self, type, xo, yo, vx, vy, angularSpeed, pygame):
-        self.type = type
+        self.type = type # Type of enemy. It can be 'bomb' or 'alien'
         self.x = xo
         self.y = yo
         self.vx = vx
