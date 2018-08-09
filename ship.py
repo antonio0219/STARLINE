@@ -8,8 +8,11 @@ Created on Mon Jul 23 18:49:06 2018
 import math
 
 class ship :
-    def __init__(self, type, xo, yo, pygame):
-        self.shipImage = pygame.image.load('assets/images/ships/ship'+ str(type)+'.png')
+    def __init__(self, type, xo, yo, pygame, size='small'):
+        if size == 'small' :
+            self.shipImage = pygame.image.load('assets/images/ships/ship'+ str(type)+'.png')
+        else:
+            self.shipImage = pygame.image.load('assets/images/ships/big/ship'+ str(type)+'.png')
         self.x = xo
         self.y = yo
         self.vx = 0

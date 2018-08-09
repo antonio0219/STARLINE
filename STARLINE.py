@@ -47,12 +47,16 @@ Yo1 = None
 Xo2 = None
 Yo2 = None
 
-startAnimation1 = False # It will be used in state chooseShip while the animation of the ship is running
-startAnimation2 = False
-k1 = 0
-k2 = 0
-up1 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
-up2 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
+startAnimationChoose = [False, False]
+#startAnimation1 = False # It will be used in state chooseShip while the animation of the ship is running
+#startAnimationChoose2 = False
+k = [0, 0]
+kAnim = 0 # index for the animation of startAnimation
+#k1 = 0
+#k2 = 0
+up = [True, True]
+#up1 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
+#up2 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
 
 
 #levelFile = open(configList[0][0])
@@ -75,11 +79,17 @@ YARROWDOWN = 625
 timeButtonPressed = 500
 XSTARTBUTTON = 450
 YSTARTBUTTON = 300
-MAXTYPES = 10
-XSELECTION1 = 700
-YSELECTION1 = 350
-XSELECTION2 = 300
-YSELECTION2 = 350
+MAXTYPES = 11
+XSELECTION = [745, 245]
+YSELECTION = [350, 350]
+XANIMATION = [random.randint(550,800), random.randint(200,450)]
+YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
+XPLANET = 500
+YPLANET = 575
+#XSELECTION1 = 745
+#YSELECTION1 = 350
+#XSELECTION2 = 245
+#YSELECTION2 = 350
 
 
 # PYGAME OBJECTS
@@ -90,15 +100,17 @@ surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT),pygame.RESIZABLE
 pygame.display.set_caption('STARLINE')
 clock = GAME_TIME.Clock()
 pygame.font.init()
-textFont = pygame.font.SysFont("Becker", 40)
-levelTitleFont = pygame.font.SysFont("Becker", 30)
-type1 = int(configList[0][0]) # Type1 and type2 are read from the first line of config file
-type2 = int(configList[0][1])
+textFont = pygame.font.SysFont("Becker", 40, True)
+levelTitleFont = pygame.font.SysFont("Becker", 30, True)
+#type1 = int(configList[0][0]) # Type1 and type2 are read from the first line of config file
+#type2 = int(configList[0][1])
+type = [int(configList[0][0]), int(configList[0][1])]
 configList.pop(0)
 level = -1
-player = ship.doubleShip(type1, Xo1, Yo1, type2, Xo2, Yo2, pygame)
-player1Choose = ship.ship(type1, XSELECTION1, YSELECTION2, pygame)
-player2Choose = ship.ship(type2, XSELECTION2, YSELECTION2, pygame)
+player = ship.doubleShip(type[0], Xo1, Yo1, type[1], Xo2, Yo2, pygame)
+playerChoose = [ship.ship(type[0], XSELECTION[0], YSELECTION[0], pygame, 'big'), ship.ship(type[1], XSELECTION[1], YSELECTION[1], pygame, 'big')]
+#player1Choose = ship.ship(type1, XSELECTION1, YSELECTION2, pygame, 'big')
+#player2Choose = ship.ship(type2, XSELECTION2, YSELECTION2, pygame, 'big')
 
 
 # LOAD IMAGES
@@ -118,6 +130,8 @@ arrowDownSmallImage = pygame.image.load("assets/images/buttons/buttonDownSmall.p
 arrowDownBigImage = pygame.image.load("assets/images/buttons/buttonDownBig.png")
 startButtonUp = pygame.image.load("assets/images/buttons/startButtonUp.png")
 startButtonDown = pygame.image.load("assets/images/buttons/startButtonDown.png")
+backgroundPlanet = pygame.image.load("assets/images/background/backgroundPlanet.png")
+youWinImage = pygame.image.load("assets/images/background/pause.png")
 
 #FUNCTIONS
 
@@ -228,9 +242,28 @@ def levelSelector():
     surface.blit(renderedText,rect)    
  
 def startAnimation():
-    global surface
-    renderedText = textFont.render('Animacion de inicio de nivel. Presiona el ratón', 1, (255,255,255))
-    surface.blit(renderedText, (100, 100))
+    global surface, kAnim, playerChoose, state, XANIMATION, YANIMATION, startTime
+    rect = backgroundPlanet.get_rect()
+    rect.center = (XPLANET,YPLANET)
+    surface.blit(backgroundPlanet,rect) 
+
+    for num in range(0,2):
+        if kAnim == 0 or kAnim == 1: # Entramos con kAnim en 0 para la primera nave y en kAnim=1 para la segunda nave
+            playerChoose[num].goTo(XANIMATION[num],YANIMATION[num])
+            kAnim += 1
+        elif kAnim < 160 :
+            playerChoose[num].vel('up')
+            kAnim += 1
+        else :
+            kAnim = 0
+            XANIMATION = [random.randint(550,800), random.randint(200,450)]
+            YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
+            state = 'inGame'
+            resetPressed()
+            startTime = GAME_TIME.get_ticks()
+            
+        playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+        playerChoose[num].draw(surface, GAME_TIME)
         
 def inGame():
     global surface, levelList, enemiesList, actualMessage, nextLevel, state, rPressed, player, startTime, levelList, levelFile, levelReader, level
@@ -272,8 +305,11 @@ def inGame():
         if actualMessage.isDead(GAME_TIME) :
             actualMessage = None
         
-    if player.isDead():
-        surface.blit(gameOverImage, (83, 69))
+    if player.isDead() or nextLevel:
+        if nextLevel:
+            surface.blit(youWinImage, (83, 69))
+        else:
+            surface.blit(gameOverImage, (83, 69))
         if rPressed: 
             state = 'inGame'
             startTime = GAME_TIME.get_ticks()
@@ -293,108 +329,63 @@ def inGame():
 
 
 def chooseShip():
-    global type1, type2, surface, startAnimation1, startAnimation2, player1Choose, player2Choose, k1, k2, up1, up2
-    
-    if upPressed and not startAnimation1:
-        type1 -= 1
-        type1 = type1 % MAXTYPES
-        resetPressed()
-        startAnimation1 = True
-        k1 = 0 # index to make the animation. from k=0 to k=??? the ship is going out. In k=?? a new ship is created. From k=?? to k=?? the new ship is moving to the center of the screen
-        up1 = True
-    elif downPressed and not startAnimation1:
-        type1 += 1
-        type1 = type1 % MAXTYPES
-        resetPressed()
-        startAnimation1 = True
-        k1 = 0
-        up1 = False
-    if wPressed and not startAnimation2:
-        type2 -= 1
-        type2 = type2 % MAXTYPES
-        resetPressed()
-        startAnimation2 = True
-        k2 = 0
-        up2 = True
-    elif sPressed and not startAnimation2:
-        type2 += 1
-        type2 = type2 % MAXTYPES
-        resetPressed()
-        startAnimation2 = True
-        k2 = 0
-        up2 = False
-        
-    
-    if startAnimation1 :
-        if k1 < 40:
-            if up1:
-                player1Choose.vel('up')
-            else :
-                player1Choose.vel('down')
-            player1Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k1 += 1
-        elif k1 == 40:
-            if up1:
-                player1Choose = ship.ship(type1, XSELECTION1, WINDOW_HEIGHT + 100, pygame)
-            else:
-                player1Choose = ship.ship(type1, XSELECTION1, -100 , pygame)
-            k1 += 1
-        elif k1 < 78:
-            if up1:
-                player1Choose.vel('up')
-            else :
-                player1Choose.vel('down')
-            player1Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k1 += 1
-        elif k1 < 83:
-            if up1:
-                player1Choose.vel('down')
-            else :
-                player1Choose.vel('up')
-            player1Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k1 += 1
-        elif k1 == 83:
-            player1Choose.goTo(XSELECTION1,YSELECTION1)
-            startAnimation1 = False
-            
+    global type, surface, startAnimationChoose, playerChoose, k, up
 
-    if startAnimation2 :
-        if k2 < 40:
-            if up2:
-                player2Choose.vel('up')
-            else :
-                player2Choose.vel('down')
-            player2Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k2 += 1
-        elif k2 == 40:
-            if up2:
-                player2Choose = ship.ship(type2, XSELECTION2, WINDOW_HEIGHT + 100, pygame)
-            else:
-                player2Choose = ship.ship(type2, XSELECTION2, -100 , pygame)
-            k2 += 1
-        elif k2 < 78:
-            if up2:
-                player2Choose.vel('up')
-            else :
-                player2Choose.vel('down')
-            player2Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k2 += 1
-        elif k2 < 83:
-            if up2:
-                player2Choose.vel('down')
-            else :
-                player2Choose.vel('up')
-            player2Choose.move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-            k2 += 1
-        elif k2 == 83:
-            player2Choose.goTo(XSELECTION2,YSELECTION2)
-            startAnimation2 = False
-
-    player1Choose.draw(surface, GAME_TIME)
-    player2Choose.draw(surface, GAME_TIME)
+    upPres = [upPressed, wPressed]
+    downPres = [downPressed, sPressed]
     
-    print ('tipo1 = ' + str(type1))
-    print ('tipo2 = ' + str(type2))
+    for num in range(0,2):
+        if upPres[num] and not startAnimationChoose[0]:
+            type[num] -= 1
+            type[num] = type[num] % MAXTYPES
+            resetPressed()
+            startAnimationChoose[num] = True
+            k[num] = 0 # index to make the animation. from k=0 to k=??? the ship is going out. In k=?? a new ship is created. From k=?? to k=?? the new ship is moving to the center of the screen
+            up[num] = True
+        elif downPres[num] and not startAnimationChoose[num]:
+            type[num] += 1
+            type[num] = type[num] % MAXTYPES
+            resetPressed()
+            startAnimationChoose[num] = True
+            k[num] = 0
+            up[num] = False        
+    
+        if startAnimationChoose[num] :
+            if k[num] < 40:
+                if up[num]:
+                    playerChoose[num].vel('up')
+                else :
+                    playerChoose[num].vel('down')
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                k[num] += 1
+            elif k[num] == 40:
+                if up[num]:
+                    playerChoose[num] = ship.ship(type[num], XSELECTION[num], WINDOW_HEIGHT + 100, pygame, 'big')
+                else:
+                    playerChoose[num] = ship.ship(type[num], XSELECTION[num], -100 , pygame, 'big')
+                k[num] += 1
+            elif k[num] < 78:
+                if up[num]:
+                    playerChoose[num].vel('up')
+                else :
+                    playerChoose[num].vel('down')
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                k[num] += 1
+            elif k[num] < 83:
+                if up[num]:
+                    playerChoose[num].vel('down')
+                else :
+                    playerChoose[num].vel('up')
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                k[num] += 1
+            elif k[num] == 83:
+                playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
+                startAnimationChoose[num] = False
+
+        playerChoose[num].draw(surface, GAME_TIME)
+    
+    print ('tipo1 = ' + str(type[0]))
+    print ('tipo2 = ' + str(type[1]))
     
     if startButtonPressedToDraw: # Draw the button when it is pressed
         surface.blit(startButtonDown, (XSTARTBUTTON + 10, YSTARTBUTTON + 10))            
@@ -423,8 +414,11 @@ while True:
                     quitGame()
                 elif state == 'levelSelector':
                     state = 'welcomeScreen'
+                elif state == 'chooseShip':
+                    state = 'levelSelector'    
                 else :
                     state = 'levelSelector'
+                resetPressed()
             if event.key == pygame.K_SPACE :
                 spacePressed = True
                 startButtonPressedToDraw = True # Only to show the button pressed in the level selector screen. Not reset by resetPressed()
@@ -516,14 +510,20 @@ while True:
         if spaceReleased:
             state = 'levelSelector'
             resetPressed()
-            player = ship.doubleShip(type1, Xo1, Yo1, type2, Xo2, Yo2, pygame)
-        
+            player = ship.doubleShip(type[0], Xo1, Yo1, type[1], Xo2, Yo2, pygame)
+            for num in range(0,2):
+                playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
+                k[num] = 0
+                startAnimationChoose[num] = False
             
     if state == 'startAnimation': 
         startAnimation()
         if spacePressed:
             state = 'inGame'
             resetPressed()
+            kAnim = 0
+            XANIMATION = [random.randint(550,800), random.randint(200,450)]
+            YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
             startTime = GAME_TIME.get_ticks()
  
     if state == 'inGame':
@@ -546,9 +546,6 @@ while True:
         if wPressed:
             player.vel('none', 'up')
             
-        if nextLevel:
-            state = 'levelSelector'
-            resetPressed()
         
     
     if state == 'helpScreen':
@@ -560,6 +557,3 @@ while True:
     
     clock.tick(FPS)
     pygame.display.update()
-    
-
-        
