@@ -62,31 +62,31 @@ class ship :
         elif direction == 'right'and self.vx < self.limvel:
             self.vx += self.a
     
-    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT):
+    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT, restricted = True):
         #if (self.x - 25) >= 0 and (self.x + 25) <= WINDOW_WIDTH and (self.y + 25) <= WINDOW_HEIGHT and (self.y - 25) <= 0:
         self.x += self.vx
         self.y += self.vy
             
-        if self.x - 25 <= 0:
+        if self.x - 25 <= 0 and restricted :
             self.x = 0 + 25
             self.vx = 0
-        if self.x + 25 >= WINDOW_WIDTH:
+        if self.x + 25 >= WINDOW_WIDTH and restricted :
             self.x = WINDOW_WIDTH - 25
             self.vx = 0
-        if self.y + 25 >= WINDOW_HEIGHT:
+        if self.y + 25 >= WINDOW_HEIGHT and restricted :
             self.y = WINDOW_HEIGHT - 25
             self.vy = 0
-        if self.y - 25 <= 0:
+        if self.y - 25 <= 0 and restricted :
             self.y = 0 + 25
             self.vy = 0
         
         if self.vx > 0:
             self.vx -= self.a/2
-        elif self.vx <0:
+        elif self.vx < 0:
             self.vx += self.a/2
         if self.vy > 0 :
             self.vy -= self.a/2
-        elif self.vy > 0:
+        elif self.vy < 0:
             self.vy += self.a/2
 
     def isDead(self):
