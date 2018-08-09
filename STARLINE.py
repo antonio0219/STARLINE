@@ -100,8 +100,8 @@ surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT),pygame.RESIZABLE
 pygame.display.set_caption('STARLINE')
 clock = GAME_TIME.Clock()
 pygame.font.init()
-textFont = pygame.font.SysFont("Becker", 40, True)
-levelTitleFont = pygame.font.SysFont("Becker", 30, True)
+textFont = pygame.font.SysFont("Becker", 40)
+levelTitleFont = pygame.font.SysFont("Becker", 30)
 #type1 = int(configList[0][0]) # Type1 and type2 are read from the first line of config file
 #type2 = int(configList[0][1])
 type = [int(configList[0][0]), int(configList[0][1])]
