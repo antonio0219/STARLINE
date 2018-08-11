@@ -967,6 +967,326 @@
          id="path4113"
          inkscape:connector-curvature="0" />
     </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3258"
+       id="linearGradient3260"
+       x1="-24.036455"
+       y1="148.86002"
+       x2="-26.435387"
+       y2="79.815163"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,87.952174,-216.44173)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3258">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3254" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3256" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3272"
+       id="linearGradient3274"
+       x1="29.907459"
+       y1="136.05948"
+       x2="32.137135"
+       y2="75.668434"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,87.952174,-216.44173)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3272">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3268" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3270" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3280"
+       id="linearGradient3282"
+       x1="67.911324"
+       y1="146.6011"
+       x2="66.782471"
+       y2="79.963058"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,87.952174,-216.44173)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3280">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3276" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3278" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3288"
+       id="linearGradient3290"
+       x1="119.46254"
+       y1="144.90691"
+       x2="118.33369"
+       y2="78.268875"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,87.952174,-216.44173)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3288">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3284" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3286" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3296"
+       id="linearGradient3298"
+       x1="226.60674"
+       y1="128.92368"
+       x2="229.62502"
+       y2="68.411659"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3296">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3292" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3294" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3304"
+       id="linearGradient3306"
+       x1="296.491"
+       y1="142.53441"
+       x2="296.491"
+       y2="45.086323"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3304">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3300" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3302" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3312"
+       id="linearGradient3314"
+       x1="354.2623"
+       y1="142.31995"
+       x2="359.49585"
+       y2="51.189327"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3312">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3308" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3310" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3320"
+       id="linearGradient3322"
+       x1="387.34714"
+       y1="131.74387"
+       x2="391.34738"
+       y2="56.489822"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3320">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3316" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3318" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3328"
+       id="linearGradient3330"
+       x1="441.18726"
+       y1="132.29462"
+       x2="439.30582"
+       y2="71.680359"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3328">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3324" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3326" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3336"
+       id="linearGradient3338"
+       x1="454.58496"
+       y1="121.28243"
+       x2="461.37982"
+       y2="71.174286"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.941627,0,0,1.9450513,-483.77908,-35.954495)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3336">
+      <stop
+         style="stop-color:#ffcc00;stop-opacity:1;"
+         offset="0"
+         id="stop3332" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3334" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3336"
+       id="linearGradient4298"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="454.58496"
+       y1="121.28243"
+       x2="461.37982"
+       y2="71.174286" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3328"
+       id="linearGradient4302"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="441.18726"
+       y1="132.29462"
+       x2="439.30582"
+       y2="71.680359" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3320"
+       id="linearGradient4305"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="387.34714"
+       y1="131.74387"
+       x2="391.34738"
+       y2="56.489822" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3312"
+       id="linearGradient4308"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="354.2623"
+       y1="142.31995"
+       x2="359.49585"
+       y2="51.189327" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3304"
+       id="linearGradient4312"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="296.491"
+       y1="142.53441"
+       x2="296.491"
+       y2="45.086323" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3296"
+       id="linearGradient4316"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,1865.4389,692.42575)"
+       x1="226.60674"
+       y1="128.92368"
+       x2="229.62502"
+       y2="68.411659" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3288"
+       id="linearGradient4319"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,2508.1768,489.52278)"
+       x1="119.46254"
+       y1="144.90691"
+       x2="118.33369"
+       y2="78.268875" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3280"
+       id="linearGradient4322"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,2508.1768,489.52278)"
+       x1="67.911324"
+       y1="146.6011"
+       x2="66.782471"
+       y2="79.963058" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3272"
+       id="linearGradient4325"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,2508.1768,489.52278)"
+       x1="29.907459"
+       y1="136.05948"
+       x2="32.137135"
+       y2="75.668434" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3258"
+       id="linearGradient4328"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.1827687,0,0,2.1866183,2508.1768,489.52278)"
+       x1="-24.036455"
+       y1="148.86002"
+       x2="-26.435387"
+       y2="79.815163" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -975,11 +1295,11 @@
      borderopacity="0.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="0"
-     inkscape:zoom="0.22627417"
-     inkscape:cx="400.4027"
-     inkscape:cy="596.77413"
+     inkscape:zoom="0.64"
+     inkscape:cx="2229.5337"
+     inkscape:cy="170.2661"
      inkscape:document-units="px"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1440"
      inkscape:window-height="836"
@@ -5975,6 +6295,212 @@
          d="m 206.64437,448.94738 c 40.63053,2.19074 81.6464,2.06958 122.98701,0"
          style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
     </g>
+    <path
+       style="fill:#000000;stroke:#cccccc;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="M 2226.4714,625.48445 V 1169.381 h 754.8625 V 627.54466 z"
+       id="path3410"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4328);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2337.8269,667.9836 c 7.653,48.93164 16.9152,102.84762 30.883,148.68565 l 50.4915,2e-5 c 0.4758,-21.95284 2.0896,-43.9057 14.7591,-65.85854 18.7636,21.40402 19.44,42.80807 21.7502,64.21206 h 47.3844 c 21.1016,-49.11947 29.2214,-98.23894 33.4022,-147.3584 l -40.3933,0.82323 c -2.1757,32.92926 -0.2653,65.85851 -15.5359,98.78776 -10.9753,-21.25896 -21.0668,-43.4037 -34.9557,-61.74236 l -29.5181,-0.82322 c -13.0823,21.19212 -18.5505,48.48953 -24.0806,75.73729 -10.6044,-35.12455 -14.0595,-77.38031 -17.0643,-112.50486 z"
+       id="path10"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4325);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2545.5321,667.66439 c -4.2844,49.48436 -6.6965,98.5934 -3.2854,146.53516 30.0371,3.7171 65.7497,0.60795 103.4895,-4.93939 l -1.6426,-26.3434 c -23.2658,2.77277 -45.9366,8.52709 -70.6358,4.11616 -0.7344,-12.20483 -1.4677,-24.41123 0.8214,-41.16158 8.7057,1.04313 18.7019,1.22394 32.0324,-0.82324 l -0.8213,-24.69691 c -9.5642,0.54337 -6.7934,4.67418 -29.5684,0 -4.5245,-9.25783 -3.1838,-21.45492 -1.6427,-33.75248 26.168,5.37292 41.6846,0.07 60.7796,-1.64646 l -0.8214,-23.05048 c -27.6274,5.16329 -56.4569,8.3186 -88.7053,5.76262 z"
+       id="path12"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4322);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2653.9474,664.37146 c -2.6155,49.94856 -2.6444,98.86008 2.4641,145.71196 34.8253,-7.74161 69.3764,-12.45878 102.6682,-3.29292 l -3.2854,-27.98987 c -23.819,-6.00041 -47.638,-7.00715 -71.4571,2.46968 -9.7348,-38.96631 -5.3846,-77.93257 -3.2854,-116.89885 z"
+       id="path14"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4319);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2766.4718,660.66693 c -2.9286,48.10083 -6.6213,96.1059 2.4641,145.71194 35.3003,-11.89909 68.8482,-6.23267 102.6682,-3.29291 l -3.2854,-27.98988 c -19.945,-3.20254 -42.9468,-3.85142 -71.4571,2.46968 -11.4067,-37.81794 -4.8299,-77.63858 -3.2854,-116.89883 z"
+       id="path14-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4316);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2338.3285,1009.721 c -5.3618,-52.96223 -7.4238,-105.92442 -5.0457,-158.88664 108.3083,-3.30367 110.8877,62.96428 110.2851,73.66565 1.8873,41.66408 -22.9824,73.73263 -105.2394,85.22099 z"
+       id="path31"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2360.069,974.3326 c -2.5675,-29.5558 -3.5044,-59.93016 -2.1624,-89.55427 60.8219,-2.27984 66.5974,38.12387 65.5944,47.42922 -2.8474,22.09563 -33.7309,41.59335 -63.432,42.12505 z"
+       id="path33"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4312);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2467.0564,857.43529 c -13.269,53.13972 -10.9667,98.68287 -2.8833,145.88681 26.4927,8.4933 57.817,8.6848 95.148,-1.4444 7.4294,-47.94354 16.4502,-95.65917 2.8833,-146.60905 -34.3043,-12.24875 -65.4765,-8.80145 -95.148,2.16664 z"
+       id="path35"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2486.5626,984.67697 c -7.7524,-35.62912 -10.294,-75.55654 -1.0836,-111.18568 20.3808,-8.35386 40.3387,-7.65805 58.7443,-0.71638 10.2955,36.35132 2.843,74.49363 -2.1341,110.84495 -13.4821,4.33008 -31.792,10.62194 -55.5266,1.05711 z"
+       id="path37"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4308);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2580.3253,1003.6251 c 4.093,-50.07331 1.9301,-100.14666 0,-150.22004 l 27.3911,1.44444 c 10.0722,22.49463 17.1922,45.41197 37.4825,66.4435 5.3512,-23.11077 3.128,-46.22156 -0.7207,-69.33235 l 24.5078,0.72221 c -4.1178,52.74743 0.7229,100.98963 2.1624,150.94224 h -32.4368 c -2.1922,-30.46656 -14.6672,-61.87014 -33.8785,-93.88748 -2.7163,31.53657 -2.7552,63.07316 0.7209,94.60978 z"
+       id="path39"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4305);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2686.4203,856.27885 c 2.7563,49.69265 7.5054,99.05184 1.4417,150.22005 34.171,-4.1946 59.7555,-3.1506 86.4981,-2.8888 l -2.1624,-22.38861 c -20.4232,4.377 -40.8464,8.55596 -61.2696,-0.72219 l -4.3249,-43.33272 27.3911,-2.88885 -1.7217,-19.4997 -23.5069,0.72222 -3.6041,-38.27726 c 23.7704,4.01776 40.9943,-1.7835 60.5487,-1.44442 l -0.7208,-21.66636 c -28.5594,2.30563 -54.6556,2.96536 -78.5692,2.16664 z"
+       id="path41"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4302);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2796.6568,848.04049 c 8.0601,43.08245 6.3805,91.40387 0.5808,134.48633 l 31.2111,-0.82324 c -5.414,-42.82864 -7.9538,-86.61751 -4.1067,-132.54024 z"
+       id="path43"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:#ffcc00;fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2812.8117,998.67821 c 22.1163,4.01839 18.6402,30.26109 0.1722,31.08839 -19.403,0.405 -20.0748,-31.80016 -0.1722,-31.08839 z"
+       id="path45"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:url(#linearGradient4298);fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2844.8392,846.93389 c 8.0601,43.08245 6.3804,91.40386 0.5807,134.48633 l 31.2112,-0.82324 c -5.4141,-42.82864 -7.9538,-86.6175 -4.1067,-132.54023 z"
+       id="path43-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:#ffcc00;fill-opacity:1;stroke:#999999;stroke-width:3.3725872;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2860.9941,997.5716 c 22.1163,4.0184 18.6402,30.2611 0.1722,31.0884 -19.403,0.405 -20.0748,-31.80016 -0.1722,-31.0884 z"
+       id="path45-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <text
+       xml:space="preserve"
+       style="font-size:21.59084702px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#008080;fill-opacity:1;stroke:none;font-family:monospace;-inkscape-font-specification:monospace"
+       x="2380.5962"
+       y="1072.9237"
+       id="text3374"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349"><tspan
+         sodipodi:role="line"
+         id="tspan3372"
+         x="2380.5962"
+         y="1072.9237"
+         style="font-size:21.72788048px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:19.39999962;fill:#008080;font-family:Courier New;-inkscape-font-specification:Courier New Bold">You have saved the Earth again!!</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20.7690506px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:1.25;letter-spacing:0px;word-spacing:0px;fill:#008080;fill-opacity:1;stroke:none;font-family:Courier New;-inkscape-font-specification:Courier New"
+       x="2325.1768"
+       y="1107.6641"
+       id="text3374-2"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349"><tspan
+         sodipodi:role="line"
+         id="tspan3372-0"
+         x="2325.1768"
+         y="1107.6641"
+         style="font-size:21.72788048px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#008080;font-family:Courier New;-inkscape-font-specification:Courier New Bold">Press &quot;r&quot; to start again or escape to exit</tspan></text>
+    <path
+       style="fill:none;stroke:#999999;stroke-width:2.37954736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2961.3233,1159.5629 10.2183,-13.1789"
+       id="path3501"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:2.37954736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2950.1568,1159.7876 22.6386,-31.1568"
+       id="path3503"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:2.37954736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2936.9042,1160.3438 36.7665,-48.3087"
+       id="path3505"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:2.37954736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2919.9219,1159.8013 53.2294,-64.3572"
+       id="path3507"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/pi/programas_python/juegosEnPython/STARLINE/.inkscape/path3509.png"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:2.37954736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2898.552,1159.305 73.7193,-82.7518"
+       id="path3509"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="33.163349"
+       inkscape:export-ydpi="33.163349" />
   </g>
   <g
      inkscape:groupmode="layer"
