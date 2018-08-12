@@ -69,7 +69,7 @@ multiplier = 1
 
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 700
-FPS = 30
+FPS = 20
 XLABEL = 500
 YLABEL = 500
 XLOGO = 500
@@ -249,8 +249,8 @@ def startAnimation():
     rect.center = (XPLANET,YPLANET)
     surface.blit(backgroundPlanet,rect) 
 
-    res1 = playerChoose[0].moveSlow(XANIMATION[0], -400, 0.5, multiplier)
-    res2 = playerChoose[1].moveSlow(XANIMATION[1], -400, 0.5, multiplier)
+    res1 = playerChoose[0].moveSlow(XANIMATION[0], -400, 0.4, multiplier)
+    res2 = playerChoose[1].moveSlow(XANIMATION[1], -400, 0.4, multiplier)
     playerChoose[0].draw(surface, GAME_TIME)
     playerChoose[1].draw(surface, GAME_TIME)
     
