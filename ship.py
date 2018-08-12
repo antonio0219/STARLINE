@@ -65,10 +65,10 @@ class ship :
         elif direction == 'right'and self.vx < self.limvel:
             self.vx += self.a
     
-    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT, restricted = True):
+    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, restricted = True):
         #if (self.x - 25) >= 0 and (self.x + 25) <= WINDOW_WIDTH and (self.y + 25) <= WINDOW_HEIGHT and (self.y - 25) <= 0:
-        self.x += self.vx
-        self.y += self.vy
+        self.x += self.vx * multiplier
+        self.y += self.vy * multiplier
             
         if self.x - 25 <= 0 and restricted :
             self.x = 0 + 25
@@ -84,13 +84,21 @@ class ship :
             self.vy = 0
         
         if self.vx > 0:
-            self.vx -= self.a/2
+            self.vx -= self.a/2 
         elif self.vx < 0:
             self.vx += self.a/2
         if self.vy > 0 :
             self.vy -= self.a/2
         elif self.vy < 0:
             self.vy += self.a/2
+
+    def moveSlow(self, XTarget, YTarget, Fast, multiplier):
+        self.vx = Fast*(XTarget-self.x)/10
+        self.vy = Fast*(YTarget-self.y)/10
+        self.x += self.vx * multiplier
+        self.y += self.vy * multiplier
+        return (abs(XTarget-self.x)<5 and abs(YTarget-self.y)<5)
+        
 
     def isDead(self):
         return self.state == 'dead'
@@ -156,9 +164,9 @@ class doubleShip :
         self.ship1.vel(direction1)
         self.ship2.vel(direction2)
         
-    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT):
-        self.ship1.move(WINDOW_WIDTH, WINDOW_HEIGHT)
-        self.ship2.move(WINDOW_WIDTH, WINDOW_HEIGHT)
+    def move(self, WINDOW_WIDTH, WINDOW_HEIGHT, multiplier):
+        self.ship1.move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier)
+        self.ship2.move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier)
         
     def getPos(self):
         return (self.ship1.getPos(),self.ship2.getPos())

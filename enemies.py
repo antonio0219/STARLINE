@@ -63,10 +63,10 @@ class enemy:
             rect.center = (self.x,self.y)
             surface.blit(self.cockpit,rect)
         
-    def move(self):
-        self.x += self.vx
-        self.y += self.vy
-        self.angle += self.angularSpeed
+    def move(self, multiplier):
+        self.x += (self.vx * multiplier)
+        self.y += (self.vy * multiplier)
+        self.angle += (self.angularSpeed * multiplier)
         self.angle = self.angle % 360
     
     def out(self,WINDOW_WIDTH,WINDOW_HEIGHT): # If you create an enemy more than 100 px out of the screen it will desapear

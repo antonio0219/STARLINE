@@ -47,27 +47,29 @@ Yo1 = None
 Xo2 = None
 Yo2 = None
 
-startAnimationChoose = [False, False]
-#startAnimation1 = False # It will be used in state chooseShip while the animation of the ship is running
-#startAnimationChoose2 = False
+startAnimationChoose = [False, False] # It will be used in state chooseShip while the animation of the ship is running
 k = [0, 0]
 kAnim = 0 # index for the animation of startAnimation
-#k1 = 0
-#k2 = 0
-up = [True, True]
-#up1 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
-#up2 = True # it will be used by chooseShip animation. If True the ship will exit the screen rising
+up = [True, True] # it will be used by chooseShip animation. If True the ship will exit the screen rising
+
+deltaTime = 0
+lastTime = 0
+multiplier = 1
 
 
 #levelFile = open(configList[0][0])
 #levelReader = csv.reader(levelFile, delimiter=';')
 #levelList = list(configReader)
-            
+   
+
+
+
+         
 # CONSTANTS
 
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 700
-FPS = 60
+FPS = 30
 XLABEL = 500
 YLABEL = 500
 XLOGO = 500
@@ -131,7 +133,7 @@ arrowDownBigImage = pygame.image.load("assets/images/buttons/buttonDownBig.png")
 startButtonUp = pygame.image.load("assets/images/buttons/startButtonUp.png")
 startButtonDown = pygame.image.load("assets/images/buttons/startButtonDown.png")
 backgroundPlanet = pygame.image.load("assets/images/background/backgroundPlanet.png")
-youWinImage = pygame.image.load("assets/images/background/pause.png")
+youWinImage = pygame.image.load("assets/images/background/wellDoneImage.png")
 
 #FUNCTIONS
 
@@ -247,23 +249,18 @@ def startAnimation():
     rect.center = (XPLANET,YPLANET)
     surface.blit(backgroundPlanet,rect) 
 
-    for num in range(0,2):
-        if kAnim == 0 or kAnim == 1: # Entramos con kAnim en 0 para la primera nave y en kAnim=1 para la segunda nave
-            playerChoose[num].goTo(XANIMATION[num],YANIMATION[num])
-            kAnim += 1
-        elif kAnim < 160 :
-            playerChoose[num].vel('up')
-            kAnim += 1
-        else :
-            kAnim = 0
-            XANIMATION = [random.randint(550,800), random.randint(200,450)]
-            YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
-            state = 'inGame'
-            resetPressed()
-            startTime = GAME_TIME.get_ticks()
-            
-        playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
-        playerChoose[num].draw(surface, GAME_TIME)
+    res1 = playerChoose[0].moveSlow(XANIMATION[0], -400, 0.5, multiplier)
+    res2 = playerChoose[1].moveSlow(XANIMATION[1], -400, 0.5, multiplier)
+    playerChoose[0].draw(surface, GAME_TIME)
+    playerChoose[1].draw(surface, GAME_TIME)
+    
+    if res1 and res2:
+        state = 'inGame'
+        resetPressed()
+        startTime = GAME_TIME.get_ticks()
+        XANIMATION = [random.randint(550,800), random.randint(200,450)]
+        YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
+    
         
 def inGame():
     global surface, levelList, enemiesList, actualMessage, nextLevel, state, rPressed, player, startTime, levelList, levelFile, levelReader, level
@@ -285,7 +282,7 @@ def inGame():
             nextLevel = True
 
     for i,enemy in enumerate(enemiesList):
-        enemy.move()
+        enemy.move(multiplier)
         enemy.draw(surface, GAME_TIME)
         #enemy.hablar()
         if enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) or enemy.isdead()[0]:
@@ -297,7 +294,7 @@ def inGame():
                 resetPressed()
              
     if not player.isDead():
-        player.move(WINDOW_WIDTH, WINDOW_HEIGHT)
+        player.move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier)
         player.draw(surface, GAME_TIME)
 
     if actualMessage is not None and not player.isDead():
@@ -307,7 +304,7 @@ def inGame():
         
     if player.isDead() or nextLevel:
         if nextLevel:
-            surface.blit(youWinImage, (83, 69))
+            surface.blit(youWinImage, (100, 69))
         else:
             surface.blit(gameOverImage, (83, 69))
         if rPressed: 
@@ -356,7 +353,7 @@ def chooseShip():
                     playerChoose[num].vel('up')
                 else :
                     playerChoose[num].vel('down')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
                 k[num] += 1
             elif k[num] == 40:
                 if up[num]:
@@ -369,14 +366,14 @@ def chooseShip():
                     playerChoose[num].vel('up')
                 else :
                     playerChoose[num].vel('down')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
                 k[num] += 1
             elif k[num] < 83:
                 if up[num]:
                     playerChoose[num].vel('down')
                 else :
                     playerChoose[num].vel('up')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, False)
+                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
                 k[num] += 1
             elif k[num] == 83:
                 playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
@@ -486,9 +483,17 @@ while True:
         if spaceReleased:
             if (level == -1):
                 state = 'chooseShip'
+                for num in range(0,2):
+                    playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
+                    k[num] = 0
+                    startAnimationChoose[num] = False
                 resetPressed()
             elif (configList[level][3]) == 'True' :
                 state = 'startAnimation'
+                XANIMATION = [random.randint(550,800), random.randint(200,450)]
+                YANIMATION = [random.randint(800,1200), random.randint(800,1200)]
+                playerChoose[0].goTo(XANIMATION[0],YANIMATION[0])
+                playerChoose[1].goTo(XANIMATION[1],YANIMATION[1])
                 resetPressed()
                 levelFile = open('assets/levels/'+configList[level][0])
                 levelReader = csv.reader(levelFile, delimiter=';')
@@ -523,7 +528,9 @@ while True:
             resetPressed()
             kAnim = 0
             XANIMATION = [random.randint(550,800), random.randint(200,450)]
-            YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
+            YANIMATION = [random.randint(800,1200), random.randint(800,1200)]
+            playerChoose[0].goTo(XANIMATION[0],YANIMATION[0])
+            playerChoose[1].goTo(XANIMATION[1],YANIMATION[1])
             startTime = GAME_TIME.get_ticks()
  
     if state == 'inGame':
@@ -556,4 +563,7 @@ while True:
     
     
     clock.tick(FPS)
+    deltaTime = GAME_TIME.get_ticks() - lastTime
+    lastTime = GAME_TIME.get_ticks()
+    multiplier = deltaTime * FPS * 1E-3
     pygame.display.update()
