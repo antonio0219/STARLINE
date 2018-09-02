@@ -92,7 +92,7 @@ class ship :
         elif self.vy < 0:
             self.vy += self.a/2
 
-    def moveSlow(self, XTarget, YTarget, Fast, multiplier):
+    def moveSlow(self, XTarget, YTarget, multiplier, Fast):
         self.vx = Fast*(XTarget-self.x)/10
         self.vy = Fast*(YTarget-self.y)/10
         self.x += self.vx * multiplier

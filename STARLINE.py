@@ -48,9 +48,10 @@ Xo2 = None
 Yo2 = None
 
 startAnimationChoose = [False, False] # It will be used in state chooseShip while the animation of the ship is running
-k = [0, 0]
-kAnim = 0 # index for the animation of startAnimation
+#k = [0, 0]
 up = [True, True] # it will be used by chooseShip animation. If True the ship will exit the screen rising
+shipIsOut = [False, False]
+
 
 deltaTime = 0
 lastTime = 0
@@ -69,7 +70,7 @@ multiplier = 1
 
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 700
-FPS = 20
+FPS = 30
 XLABEL = 500
 YLABEL = 500
 XLOGO = 500
@@ -111,6 +112,7 @@ configList.pop(0)
 level = -1
 player = ship.doubleShip(type[0], Xo1, Yo1, type[1], Xo2, Yo2, pygame)
 playerChoose = [ship.ship(type[0], XSELECTION[0], YSELECTION[0], pygame, 'big'), ship.ship(type[1], XSELECTION[1], YSELECTION[1], pygame, 'big')]
+menuMessage = enemies.message('Press space', 0, 'infinity', 500, 500, 100, pygame)
 #player1Choose = ship.ship(type1, XSELECTION1, YSELECTION2, pygame, 'big')
 #player2Choose = ship.ship(type2, XSELECTION2, YSELECTION2, pygame, 'big')
 
@@ -135,13 +137,18 @@ startButtonDown = pygame.image.load("assets/images/buttons/startButtonDown.png")
 backgroundPlanet = pygame.image.load("assets/images/background/backgroundPlanet.png")
 youWinImage = pygame.image.load("assets/images/background/wellDoneImage.png")
 
+# LOAD SOUNDS
+
+clickSound = pygame.mixer.Sound('assets/sounds/click.ogg')
+completedSound = pygame.mixer.Sound('assets/sounds/completed.ogg')
+        
+
 #FUNCTIONS
 
 # GENERAL FUNCTIONS
 
 def resetPressed():
     global spaceReleased, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel, aPressed, dPressed, sPressed, wPressed, rPressed, pPressed
-    hPressed = False
     pPressed = False
     rPressed = False
     
@@ -187,14 +194,8 @@ def drawLogo():
     
 def welcomeScreen():
     global surface
-    drawLogo()  
-    renderedText = textFont.render('Pantalla de inicio. Pulsa espacio para empezar o \"h\" para ayuda', 1, (255,255,255))
-    surface.blit(renderedText, (100, 500))
-
-def helpScreen():
-    global surface
-    renderedText = textFont.render('Te estoy ayudando', 1, (255,255,255))
-    surface.blit(renderedText, (100, 100))
+    drawLogo()
+    menuMessage.draw(surface, GAME_TIME, textFont, pygame)
 
 def drawArrows():
     global surface
@@ -222,9 +223,11 @@ def levelSelector():
     
     if downPressed and level < len(configList) - 1 : # -1 represents the ship selector, not really a level
         level += 1
+        playSound('click')
         resetPressed()
     elif upPressed and level > -1 :
         level -= 1
+        playSound('click')
         resetPressed()
 	
     if level == -1 :
@@ -249,13 +252,14 @@ def startAnimation():
     rect.center = (XPLANET,YPLANET)
     surface.blit(backgroundPlanet,rect) 
 
-    res1 = playerChoose[0].moveSlow(XANIMATION[0], -400, 0.4, multiplier)
-    res2 = playerChoose[1].moveSlow(XANIMATION[1], -400, 0.4, multiplier)
+    res1 = playerChoose[0].moveSlow(XANIMATION[0], -400, multiplier, 0.4)
+    res2 = playerChoose[1].moveSlow(XANIMATION[1], -400, multiplier, 0.4)
     playerChoose[0].draw(surface, GAME_TIME)
     playerChoose[1].draw(surface, GAME_TIME)
     
     if res1 and res2:
         state = 'inGame'
+        music('inGame')
         resetPressed()
         startTime = GAME_TIME.get_ticks()
         XANIMATION = [random.randint(550,800), random.randint(200,450)]
@@ -279,7 +283,10 @@ def inGame():
     else :
         if len(enemiesList) == 0 and not player.isDead() and not player.isBlowUp():
             configList[level+1][3] = 'True'
-            nextLevel = True
+            if nextLevel == False :
+                music('spaceAmbient')
+                playSound('completed')
+                nextLevel = True
 
     for i,enemy in enumerate(enemiesList):
         enemy.move(multiplier)
@@ -291,6 +298,8 @@ def inGame():
             enemy.dead(player.getPos()[0],player.getPos()[1], player.getPoints(), GAME_TIME)
             if enemy.isdead()[1] or (enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) and enemy.isAlien()):
                 player.toDie(GAME_TIME) # Enters here when ship is killed
+                playSound('completed')
+                music('spaceAmbient')
                 resetPressed()
              
     if not player.isDead():
@@ -309,6 +318,8 @@ def inGame():
             surface.blit(gameOverImage, (83, 69))
         if rPressed: 
             state = 'inGame'
+            playSound('click')
+            music('inGame')
             startTime = GAME_TIME.get_ticks()
             enemiesList = []
             levelFile = open('assets/levels/'+configList[level][0])
@@ -326,58 +337,41 @@ def inGame():
 
 
 def chooseShip():
-    global type, surface, startAnimationChoose, playerChoose, k, up
+    global type, surface, startAnimationChoose, playerChoose, up, shipIsOut
 
     upPres = [upPressed, wPressed]
     downPres = [downPressed, sPressed]
     
     for num in range(0,2):
-        if upPres[num] and not startAnimationChoose[0]:
+        if startAnimationChoose[num] :
+            if not shipIsOut[num]: # Si todavía no ha salido la nave vieja
+                if up[num] :
+                    shipIsOut[num] = playerChoose[num].moveSlow(XSELECTION[num], -300, 0.5, multiplier) # Movemos la nave vieja fuera de la pantalla y activamos shipIsOut cuando sale
+                else:
+                    shipIsOut[num] = playerChoose[num].moveSlow(XSELECTION[num], WINDOW_HEIGHT+300, 0.5, multiplier)
+                if shipIsOut[num] : # Sólo una vez, cuando la nave ha salido, creo la nueva nave con al nuevo tipo
+                    if up[num]:
+                        playerChoose[num] = ship.ship(type[num], XSELECTION[num], WINDOW_HEIGHT + 100, pygame, 'big')
+                    else:
+                        playerChoose[num] = ship.ship(type[num], XSELECTION[num], -100 , pygame, 'big')
+            elif playerChoose[num].moveSlow(XSELECTION[num], YSELECTION[num], 0.5, multiplier) : # Movemos la nave al centro y comprobamos simultáneamente si ha llegado
+                playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
+                startAnimationChoose[num] = False
+                resetPressed()
+                shipIsOut = [False, False]
+
+        if upPres[num] and not startAnimationChoose[num]:
             type[num] -= 1
             type[num] = type[num] % MAXTYPES
             resetPressed()
             startAnimationChoose[num] = True
-            k[num] = 0 # index to make the animation. from k=0 to k=??? the ship is going out. In k=?? a new ship is created. From k=?? to k=?? the new ship is moving to the center of the screen
             up[num] = True
         elif downPres[num] and not startAnimationChoose[num]:
             type[num] += 1
             type[num] = type[num] % MAXTYPES
             resetPressed()
             startAnimationChoose[num] = True
-            k[num] = 0
             up[num] = False        
-    
-        if startAnimationChoose[num] :
-            if k[num] < 40:
-                if up[num]:
-                    playerChoose[num].vel('up')
-                else :
-                    playerChoose[num].vel('down')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
-                k[num] += 1
-            elif k[num] == 40:
-                if up[num]:
-                    playerChoose[num] = ship.ship(type[num], XSELECTION[num], WINDOW_HEIGHT + 100, pygame, 'big')
-                else:
-                    playerChoose[num] = ship.ship(type[num], XSELECTION[num], -100 , pygame, 'big')
-                k[num] += 1
-            elif k[num] < 78:
-                if up[num]:
-                    playerChoose[num].vel('up')
-                else :
-                    playerChoose[num].vel('down')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
-                k[num] += 1
-            elif k[num] < 83:
-                if up[num]:
-                    playerChoose[num].vel('down')
-                else :
-                    playerChoose[num].vel('up')
-                playerChoose[num].move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier, False)
-                k[num] += 1
-            elif k[num] == 83:
-                playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
-                startAnimationChoose[num] = False
 
         playerChoose[num].draw(surface, GAME_TIME)
     
@@ -389,38 +383,53 @@ def chooseShip():
     else:
         surface.blit(startButtonUp, (XSTARTBUTTON, YSTARTBUTTON))  
     
-# MUSIC
+# MUSIC AND SOUNDS CONTROL
     
 def music(i):
     if i == 'menu':
-        pygame.mixer.music.load('assets/music/Chronometry.ogg')
+        pygame.mixer.music.load('assets/music/A New Dimension.ogg')
+        pygame.mixer.music.play(-1)
+    if i == 'animation':
+        pygame.mixer.music.load('assets/sounds/animationSound.ogg')
+        pygame.mixer.music.play(-1)
+    if i == 'inGame':
+        pygame.mixer.music.load('assets/music/' + configList[level][2])
+        pygame.mixer.music.play(-1)
+    if i == 'spaceAmbient':
+        pygame.mixer.music.load('assets/sounds/spaceAmbient.ogg')
         pygame.mixer.music.play(-1)
     
-     
+def playSound(i):
+    if i == 'click':
+        clickSound.play()
+    if i == 'completed':
+        completedSound.play()
     
 
 # MAIN LOOP
 
+music('menu')
 while True:
     drawStage()
     # Handle user and system events 
     for event in GAME_EVENTS.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE :
+                playSound('click')
                 if state == 'welcomeScreen':
                     quitGame()
                 elif state == 'levelSelector':
                     state = 'welcomeScreen'
+                    menuMessage.reset()
                 elif state == 'chooseShip':
                     state = 'levelSelector'    
                 else :
                     state = 'levelSelector'
+                    music('menu')
                 resetPressed()
             if event.key == pygame.K_SPACE :
                 spacePressed = True
                 startButtonPressedToDraw = True # Only to show the button pressed in the level selector screen. Not reset by resetPressed()
-            if event.key == pygame.K_h :
-                hPressed = True
             if event.key == pygame.K_UP:
                 upPressed = True
                 upButtonPressedToDraw = True # Only to show the button pressed in the level selector screen. Not reset by resetPressed()
@@ -473,9 +482,7 @@ while True:
         welcomeScreen()
         if spaceReleased:
             state = 'levelSelector'
-            resetPressed()
-        if hPressed :
-            state = 'helpScreen'
+            playSound('click')
             resetPressed()
             
     if state == 'levelSelector': # LevelSelector
@@ -485,11 +492,12 @@ while True:
                 state = 'chooseShip'
                 for num in range(0,2):
                     playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
-                    k[num] = 0
+                    shipIsOut = [False, False]
                     startAnimationChoose[num] = False
                 resetPressed()
             elif (configList[level][3]) == 'True' :
                 state = 'startAnimation'
+                music('animation')
                 XANIMATION = [random.randint(550,800), random.randint(200,450)]
                 YANIMATION = [random.randint(800,1200), random.randint(800,1200)]
                 playerChoose[0].goTo(XANIMATION[0],YANIMATION[0])
@@ -518,7 +526,6 @@ while True:
             player = ship.doubleShip(type[0], Xo1, Yo1, type[1], Xo2, Yo2, pygame)
             for num in range(0,2):
                 playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
-                k[num] = 0
                 startAnimationChoose[num] = False
             
     if state == 'startAnimation': 
@@ -552,14 +559,6 @@ while True:
             player.vel('none', 'down')
         if wPressed:
             player.vel('none', 'up')
-            
-        
-    
-    if state == 'helpScreen':
-        helpScreen()
-        if spacePressed:
-            state = 'welcomeScreen'
-            resetPressed()
     
     
     clock.tick(FPS)

@@ -35,6 +35,9 @@ class enemy:
                 pygame.image.load("assets/images/explosion/expl8.png"),
                 pygame.image.load("assets/images/explosion/expl9.png")                
                 ]
+        
+        self.explosionSound = pygame.mixer.Sound('assets/sounds/explosion.ogg')
+        
         self.angle = 0
         self.pygame = pygame
         self.state = 'living'
@@ -83,6 +86,7 @@ class enemy:
                    self.state = 'blowup'
                    self.deadTime = GAME_TIME.get_ticks()
                    print ('tengo que morir, noooooo') 
+                   self.explosionSound.play()
                    self.kill = True
         if pos2[0]==pos1[0]:
             dist = abs(self.x-pos1[0])
@@ -127,8 +131,12 @@ class message:
         self.y = int(y)
         self.messageImage = pygame.image.load("assets/images/background/messageImage.png")
         self.text = text
+        self.textOriginal = text
         self.to = to
-        self.duration = int(duration)
+        if duration == 'infinity':
+            self.duration = 'infinity'
+        else:    
+            self.duration = int(duration)
         self.timeCharacter = int(timeCharacter)
         self.toDraw = ''
         self.lastCharacterTime = 0
@@ -146,7 +154,14 @@ class message:
         rect = renderedText.get_rect()
         rect.center = (self.x,self.y)
         surface.blit(renderedText,rect)
+    
+    def reset(self):
+        self.text = self.textOriginal
+        self.toDraw = ''
 
     def isDead(self, GAME_TIME):
-        return GAME_TIME.get_ticks()- self.to > self.duration
+        if self.duration is not 'infinity':
+            return GAME_TIME.get_ticks()- self.to > self.duration
+        else:
+            return False
             
