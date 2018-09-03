@@ -85,8 +85,7 @@ class enemy:
                 if self.state == 'living' :
                    self.state = 'blowup'
                    self.deadTime = GAME_TIME.get_ticks()
-                   print ('tengo que morir, noooooo') 
-                   self.explosionSound.play()
+                   #print ('tengo que morir, noooooo')
                    self.kill = True
         if pos2[0]==pos1[0]:
             dist = abs(self.x-pos1[0])
@@ -113,7 +112,8 @@ class enemy:
                 if dist <= self.radius and self.state == 'living':
                     self.state = 'blowup'
                     self.deadTime = GAME_TIME.get_ticks()
-                    #print ('tengo que morir, noooooo')
+                    self.explosionSound.play()
+                    print ('tocando sonido')
                     if self.type == 'bomb' :
                         self.kill = True
         #print ('distancia :' + str(dist))
@@ -141,12 +141,19 @@ class message:
         self.toDraw = ''
         self.lastCharacterTime = 0
         
+        self.sound = pygame.mixer.Sound('assets/sounds/typing.ogg')
+        
+        if self.duration is not 'infinity':
+            self.sound.play(-1)
+        
     def draw(self, surface, GAME_TIME, textFont, pygame):
         if len(self.text) > 0 :
             if GAME_TIME.get_ticks()-self.lastCharacterTime > self.timeCharacter :
                 self.toDraw += self.text[0] # Añado la primera letra a la palabra a dibujar
                 self.text = self.text[1:] # Quito la primera letra
                 self.lastCharacterTime = GAME_TIME.get_ticks()
+        else:
+            self.sound.stop()
         rect = self.messageImage.get_rect()
         rect.center = (self.x,self.y)
         surface.blit(self.messageImage,rect)

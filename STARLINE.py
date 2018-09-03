@@ -141,6 +141,7 @@ youWinImage = pygame.image.load("assets/images/background/wellDoneImage.png")
 
 clickSound = pygame.mixer.Sound('assets/sounds/click.ogg')
 completedSound = pygame.mixer.Sound('assets/sounds/completed.ogg')
+gameOverSound = pygame.mixer.Sound('assets/sounds/shipExplosion.ogg')
         
 
 #FUNCTIONS
@@ -298,7 +299,7 @@ def inGame():
             enemy.dead(player.getPos()[0],player.getPos()[1], player.getPoints(), GAME_TIME)
             if enemy.isdead()[1] or (enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) and enemy.isAlien()):
                 player.toDie(GAME_TIME) # Enters here when ship is killed
-                playSound('completed')
+                playSound('gameOver')
                 music('spaceAmbient')
                 resetPressed()
              
@@ -404,6 +405,8 @@ def playSound(i):
         clickSound.play()
     if i == 'completed':
         completedSound.play()
+    if i == 'gameOver':
+        gameOverSound.play()
     
 
 # MAIN LOOP
@@ -497,6 +500,7 @@ while True:
                 resetPressed()
             elif (configList[level][3]) == 'True' :
                 state = 'startAnimation'
+                playSound('click')
                 music('animation')
                 XANIMATION = [random.randint(550,800), random.randint(200,450)]
                 YANIMATION = [random.randint(800,1200), random.randint(800,1200)]
@@ -519,7 +523,6 @@ while True:
     if state == 'chooseShip':
         chooseShip()
 
-
         if spaceReleased:
             state = 'levelSelector'
             resetPressed()
@@ -532,6 +535,7 @@ while True:
         startAnimation()
         if spacePressed:
             state = 'inGame'
+            music('inGame')
             resetPressed()
             kAnim = 0
             XANIMATION = [random.randint(550,800), random.randint(200,450)]
