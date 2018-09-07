@@ -149,7 +149,7 @@ gameOverSound = pygame.mixer.Sound('assets/sounds/shipExplosion.ogg')
 # GENERAL FUNCTIONS
 
 def resetPressed():
-    global spaceReleased, hPressed, upPressed, downPressed, leftPressed, rightPressed, nextLevel, aPressed, dPressed, sPressed, wPressed, rPressed, pPressed
+    global spaceReleased, hPressed, upPressed, downPressed, leftPressed, rightPressed, aPressed, dPressed, sPressed, wPressed, rPressed, pPressed
     pPressed = False
     rPressed = False
     
@@ -162,8 +162,6 @@ def resetPressed():
     dPressed = False
     sPressed = False
     wPressed = False
-    
-    nextLevel = False
     
     spaceReleased = False
 
@@ -288,6 +286,7 @@ def inGame():
                 music('spaceAmbient')
                 playSound('completed')
                 nextLevel = True
+                resetPressed()
 
     for i,enemy in enumerate(enemiesList):
         enemy.move(multiplier)
@@ -334,6 +333,7 @@ def inGame():
             levelList.pop(0)
             player.goTo(Xo1, Yo1, Xo2, Yo2)
             player.revive()
+            nextLevel = False
             resetPressed()
 
 
@@ -390,22 +390,22 @@ def music(i):
     if i == 'menu':
         pygame.mixer.music.load('assets/music/A New Dimension.ogg')
         pygame.mixer.music.play(-1)
-    if i == 'animation':
+    elif i == 'animation':
         pygame.mixer.music.load('assets/sounds/animationSound.ogg')
         pygame.mixer.music.play(-1)
-    if i == 'inGame':
+    elif i == 'inGame':
         pygame.mixer.music.load('assets/music/' + configList[level][2])
         pygame.mixer.music.play(-1)
-    if i == 'spaceAmbient':
+    elif i == 'spaceAmbient':
         pygame.mixer.music.load('assets/sounds/spaceAmbient.ogg')
         pygame.mixer.music.play(-1)
     
 def playSound(i):
     if i == 'click':
         clickSound.play()
-    if i == 'completed':
+    elif i == 'completed':
         completedSound.play()
-    if i == 'gameOver':
+    elif i == 'gameOver':
         gameOverSound.play()
     
 
@@ -426,9 +426,10 @@ while True:
                     menuMessage.reset()
                 elif state == 'chooseShip':
                     state = 'levelSelector'    
-                else :
+                elif state == 'inGame':
                     state = 'levelSelector'
                     music('menu')
+                    nextLevel = False
                 resetPressed()
             if event.key == pygame.K_SPACE :
                 spacePressed = True
@@ -498,7 +499,7 @@ while True:
                     shipIsOut = [False, False]
                     startAnimationChoose[num] = False
                 resetPressed()
-            elif (configList[level][3]) == 'True' :
+            elif (configList[level][3]) == 'True':
                 state = 'startAnimation'
                 playSound('click')
                 music('animation')

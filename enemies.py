@@ -147,7 +147,7 @@ class message:
             self.sound.play(-1)
         
     def draw(self, surface, GAME_TIME, textFont, pygame):
-        if len(self.text) > 0 :
+        if len(self.text) > 0:
             if GAME_TIME.get_ticks()-self.lastCharacterTime > self.timeCharacter :
                 self.toDraw += self.text[0] # Añado la primera letra a la palabra a dibujar
                 self.text = self.text[1:] # Quito la primera letra
@@ -171,4 +171,3 @@ class message:
             return GAME_TIME.get_ticks()- self.to > self.duration
         else:
             return False
-            
