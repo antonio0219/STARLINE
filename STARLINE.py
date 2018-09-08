@@ -103,8 +103,8 @@ surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT),pygame.RESIZABLE
 pygame.display.set_caption('STARLINE')
 clock = GAME_TIME.Clock()
 pygame.font.init()
-textFont = pygame.font.SysFont("Becker", 40)
-levelTitleFont = pygame.font.SysFont("Becker", 30)
+textFont = pygame.font.Font("assets/fonts/nasalization-rg.ttf", 30)
+levelTitleFont = pygame.font.Font("assets/fonts/nasalization-rg.ttf", 30)
 #type1 = int(configList[0][0]) # Type1 and type2 are read from the first line of config file
 #type2 = int(configList[0][1])
 type = [int(configList[0][0]), int(configList[0][1])]
@@ -358,7 +358,7 @@ def chooseShip():
             elif playerChoose[num].moveSlow(XSELECTION[num], YSELECTION[num], 0.5, multiplier) : # Movemos la nave al centro y comprobamos simultáneamente si ha llegado
                 playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
                 startAnimationChoose[num] = False
-                resetPressed()
+                resetPressed() ##### EL FALLO PODRÍA ESTAR EN LOS RESETPRESSED
                 shipIsOut = [False, False]
 
         if upPres[num] and not startAnimationChoose[num]:
@@ -376,8 +376,8 @@ def chooseShip():
 
         playerChoose[num].draw(surface, GAME_TIME)
     
-    print ('tipo1 = ' + str(type[0]))
-    print ('tipo2 = ' + str(type[1]))
+    #print ('tipo1 = ' + str(type[0]))
+    #print ('tipo2 = ' + str(type[1]))
     
     if startButtonPressedToDraw: # Draw the button when it is pressed
         surface.blit(startButtonDown, (XSTARTBUTTON + 10, YSTARTBUTTON + 10))            

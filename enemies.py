@@ -114,7 +114,7 @@ class enemy:
                     self.deadTime = GAME_TIME.get_ticks()
                     self.explosionSound.play()
                     print ('tocando sonido')
-                    if self.type == 'bomb' :
+                    if self.type == 'bomb':
                         self.kill = True
         #print ('distancia :' + str(dist))
 
