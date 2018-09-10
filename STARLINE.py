@@ -48,7 +48,6 @@ Xo2 = None
 Yo2 = None
 
 startAnimationChoose = [False, False] # It will be used in state chooseShip while the animation of the ship is running
-#k = [0, 0]
 up = [True, True] # it will be used by chooseShip animation. If True the ship will exit the screen rising
 shipIsOut = [False, False]
 
@@ -56,15 +55,7 @@ shipIsOut = [False, False]
 deltaTime = 0
 lastTime = 0
 multiplier = 1
-
-
-#levelFile = open(configList[0][0])
-#levelReader = csv.reader(levelFile, delimiter=';')
-#levelList = list(configReader)
    
-
-
-
          
 # CONSTANTS
 
@@ -89,10 +80,6 @@ XANIMATION = [random.randint(550,800), random.randint(200,450)]
 YANIMATION = [random.randint(800,1000), random.randint(800,1000)]
 XPLANET = 500
 YPLANET = 575
-#XSELECTION1 = 745
-#YSELECTION1 = 350
-#XSELECTION2 = 245
-#YSELECTION2 = 350
 
 
 # PYGAME OBJECTS
@@ -105,16 +92,12 @@ clock = GAME_TIME.Clock()
 pygame.font.init()
 textFont = pygame.font.Font("assets/fonts/nasalization-rg.ttf", 30)
 levelTitleFont = pygame.font.Font("assets/fonts/nasalization-rg.ttf", 30)
-#type1 = int(configList[0][0]) # Type1 and type2 are read from the first line of config file
-#type2 = int(configList[0][1])
 type = [int(configList[0][0]), int(configList[0][1])]
 configList.pop(0)
 level = -1
 player = ship.doubleShip(type[0], Xo1, Yo1, type[1], Xo2, Yo2, pygame)
 playerChoose = [ship.ship(type[0], XSELECTION[0], YSELECTION[0], pygame, 'big'), ship.ship(type[1], XSELECTION[1], YSELECTION[1], pygame, 'big')]
-menuMessage = enemies.message('Press space', 0, 'infinity', 500, 500, 100, pygame)
-#player1Choose = ship.ship(type1, XSELECTION1, YSELECTION2, pygame, 'big')
-#player2Choose = ship.ship(type2, XSELECTION2, YSELECTION2, pygame, 'big')
+menuMessage = enemies.message('Presiona espacio', 0, 'infinity', 500, 500, 100, pygame)
 
 
 # LOAD IMAGES
@@ -169,6 +152,12 @@ def resetPressed():
 
 def quitGame():
     configFile.close()
+    configFileWrite = open('assets/config/config.csv', 'w',  newline='')
+    configWriter = csv.writer(configFileWrite, delimiter=';')
+    configWriter.writerow(type)
+    for item in configList:
+        configWriter.writerow(item)
+    configFileWrite.close()
     pygame.quit()
     sys.exit()
     
@@ -231,7 +220,7 @@ def levelSelector():
 	
     if level == -1 :
         imageToDraw = grayLevel
-        renderedText = levelTitleFont.render('Ship selection', 1, (255,255,255))
+        renderedText = levelTitleFont.render('Plataforma de lanzamiento', 1, (255,255,255))
     elif configList[level][3] == "True" :
         imageToDraw = greenLevel
         renderedText = levelTitleFont.render(configList[level][1], 1, (255,255,255))
@@ -272,7 +261,7 @@ def inGame():
             if not player.isDead() and not player.isBlowUp() : # No añadimos nuevos enemigos si ya nos han matado
                 if levelList[0][1] == 'message' : # Si hay que crear el nuevo mensaje
                     actualMessage = enemies.message(levelList[0][2], GAME_TIME.get_ticks(), levelList[0][3], levelList[0][4], levelList[0][5], levelList[0][6], pygame) # Creamos el mensaje
-                    print('añadido mensaje')
+                    print('añadido mensaje en '+ str(GAME_TIME.get_ticks()))
                     print('tamaño de lista = ' + str(len(levelList)))
                 else : # Hay que añadir un enemigo
                     enemiesList.append(enemies.enemy(levelList[0][1],int(levelList[0][2]),int(levelList[0][3]),int(levelList[0][4]),int(levelList[0][5]),random.randint(-10,10),pygame))
@@ -310,8 +299,9 @@ def inGame():
         actualMessage.draw(surface, GAME_TIME, textFont, pygame)
         if actualMessage.isDead(GAME_TIME) :
             actualMessage = None
+            print('Elminado Mensaje en: ' + str(GAME_TIME.get_ticks()))
         
-    if player.isDead() or nextLevel:
+    if player.isDead() or nextLevel and actualMessage is not None:
         if nextLevel:
             surface.blit(youWinImage, (100, 69))
         else:
@@ -376,9 +366,6 @@ def chooseShip():
             up[num] = False        
 
         playerChoose[num].draw(surface, GAME_TIME)
-    
-    #print ('tipo1 = ' + str(type[0]))
-    #print ('tipo2 = ' + str(type[1]))
     
     if startButtonPressedToDraw: # Draw the button when it is pressed
         surface.blit(startButtonDown, (XSTARTBUTTON + 10, YSTARTBUTTON + 10))            
