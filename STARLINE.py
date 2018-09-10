@@ -298,10 +298,10 @@ def inGame():
             enemy.dead(player.getPos()[0],player.getPos()[1], player.getPoints(), GAME_TIME)
             if enemy.isdead()[1] or (enemy.out(WINDOW_WIDTH, WINDOW_HEIGHT) and enemy.isAlien()):
                 player.toDie(GAME_TIME) # Enters here when ship is killed
-                playSound('gameOver')
                 music('spaceAmbient')
+                playSound('gameOver')
                 resetPressed()
-             
+
     if not player.isDead():
         player.move(WINDOW_WIDTH, WINDOW_HEIGHT, multiplier)
         player.draw(surface, GAME_TIME)
@@ -318,10 +318,11 @@ def inGame():
             surface.blit(gameOverImage, (83, 69))
         if rPressed: 
             state = 'inGame'
-            playSound('click')
             music('inGame')
+            playSound('click')
             startTime = GAME_TIME.get_ticks()
             enemiesList = []
+            actualMessage = None
             levelFile = open('assets/levels/'+configList[level][0])
             levelReader = csv.reader(levelFile, delimiter=';')
             levelList = list(levelReader)
@@ -358,7 +359,7 @@ def chooseShip():
             elif playerChoose[num].moveSlow(XSELECTION[num], YSELECTION[num], 0.5, multiplier) : # Movemos la nave al centro y comprobamos simultáneamente si ha llegado
                 playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
                 startAnimationChoose[num] = False
-                resetPressed() ##### EL FALLO PODRÍA ESTAR EN LOS RESETPRESSED
+                resetPressed()
                 shipIsOut = [False, False]
 
         if upPres[num] and not startAnimationChoose[num]:
@@ -387,6 +388,7 @@ def chooseShip():
 # MUSIC AND SOUNDS CONTROL
     
 def music(i):
+    pygame.mixer.stop()
     if i == 'menu':
         pygame.mixer.music.load('assets/music/A New Dimension.ogg')
         pygame.mixer.music.play(-1)
@@ -501,8 +503,8 @@ while True:
                 resetPressed()
             elif (configList[level][3]) == 'True':
                 state = 'startAnimation'
-                playSound('click')
                 music('animation')
+                playSound('click')
                 XANIMATION = [random.randint(550,800), random.randint(200,450)]
                 YANIMATION = [random.randint(800,1200), random.randint(800,1200)]
                 playerChoose[0].goTo(XANIMATION[0],YANIMATION[0])
@@ -512,6 +514,7 @@ while True:
                 levelReader = csv.reader(levelFile, delimiter=';')
                 levelList = list(levelReader)
                 enemiesList = []
+                actualMessage = None
                 Xo1 = int(levelList[0][1]) 
                 Yo1 = int(levelList[0][2])
                 levelList.pop(0)
