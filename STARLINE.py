@@ -316,13 +316,13 @@ def inGame():
             surface.blit(youWinImage, (100, 69))
         else:
             surface.blit(gameOverImage, (83, 69))
+        actualMessage = None
         if rPressed: 
             state = 'inGame'
             music('inGame')
             playSound('click')
             startTime = GAME_TIME.get_ticks()
             enemiesList = []
-            actualMessage = None
             levelFile = open('assets/levels/'+configList[level][0])
             levelReader = csv.reader(levelFile, delimiter=';')
             levelList = list(levelReader)
