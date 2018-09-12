@@ -257,7 +257,7 @@ def startAnimation():
 def inGame():
     global surface, levelList, enemiesList, actualMessage, nextLevel, state, rPressed, player, startTime, levelList, levelFile, levelReader, level
     if len(levelList)>0 : # Si quedan mensajes o enemigos por procesar
-        if (GAME_TIME.get_ticks() - startTime > int(levelList[0][0])):
+        while len(levelList)>0 and (GAME_TIME.get_ticks() - startTime > int(levelList[0][0])):
             if not player.isDead() and not player.isBlowUp() : # No añadimos nuevos enemigos si ya nos han matado
                 if levelList[0][1] == 'message' : # Si hay que crear el nuevo mensaje
                     actualMessage = enemies.message(levelList[0][2], GAME_TIME.get_ticks(), levelList[0][3], levelList[0][4], levelList[0][5], levelList[0][6], pygame) # Creamos el mensaje
@@ -269,8 +269,9 @@ def inGame():
                     print('tamaño de lista = ' + str(len(levelList)))
                 levelList.pop(0)
     else :
-        if len(enemiesList) == 0 and not player.isDead() and not player.isBlowUp():
-            configList[level+1][3] = 'True'
+        if len(enemiesList) == 0 and not player.isDead() and not player.isBlowUp() and actualMessage is None:
+            if len(configList) > level+1:
+                configList[level+1][3] = 'True'
             if nextLevel == False :
                 music('spaceAmbient')
                 playSound('completed')
@@ -300,8 +301,8 @@ def inGame():
         if actualMessage.isDead(GAME_TIME) :
             actualMessage = None
             print('Elminado Mensaje en: ' + str(GAME_TIME.get_ticks()))
-        
-    if player.isDead() or nextLevel and actualMessage is not None:
+
+    if player.isDead() or nextLevel:
         if nextLevel:
             surface.blit(youWinImage, (100, 69))
         else:
