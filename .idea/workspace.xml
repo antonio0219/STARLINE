@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4356d5f1-1c5f-4b40-ac5d-08cb5d944dad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/levels/pruebas.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STARLINE.py" beforeDir="false" afterPath="$PROJECT_DIR$/STARLINE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/config/config.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/config/config.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/config/config.csv.bk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/levels/fase1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/fase1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/levels/tutorial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/tutorial.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/levels/pruebas.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/pruebas.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +34,13 @@
     <session id="-865956044">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.32" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -65,15 +61,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="115" />
-          <entry key="csv" value="1728" />
+          <entry key="Python Console" value="260" />
+          <entry key="csv" value="1874" />
           <entry key="py" value="172" />
+          <entry key="txt" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSV" value="1728" />
-          <entry key="Python" value="287" />
+          <entry key="CSV" value="1874" />
+          <entry key="PLAIN_TEXT" value="55" />
+          <entry key="Python" value="432" />
         </counts>
       </usages-collector>
     </session>
@@ -83,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/STARLINE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="272" column="32" selection-start-line="272" selection-start-column="32" selection-end-line="272" selection-end-column="32" />
+            <state relative-caret-position="174">
+              <caret line="284" selection-start-line="284" selection-end-line="284" />
               <folding>
                 <element signature="e#153#179#0" expanded="true" />
               </folding>
@@ -95,15 +93,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ship.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3072" />
+            <state relative-caret-position="106">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/enemies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1678">
-              <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+            <state relative-caret-position="106">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
         </entry>
@@ -111,17 +111,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/levels/tutorial.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" column="66" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
+            <state relative-caret-position="187">
+              <caret line="23" selection-start-line="23" selection-end-line="27" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/levels/pruebas.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="198">
+              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -159,10 +159,10 @@
       <list>
         <option value="$PROJECT_DIR$/enemies.py" />
         <option value="$PROJECT_DIR$/STARLINE.py" />
-        <option value="$PROJECT_DIR$/assets/levels/tutorial.csv" />
-        <option value="$PROJECT_DIR$/assets/levels/pruebas.csv" />
         <option value="$PROJECT_DIR$/assets/config/config.csv" />
         <option value="$PROJECT_DIR$/assets/levels/fase1.csv" />
+        <option value="$PROJECT_DIR$/assets/levels/tutorial.csv" />
+        <option value="$PROJECT_DIR$/assets/levels/pruebas.csv" />
       </list>
     </option>
   </component>
@@ -263,26 +263,33 @@
       <option name="presentableId" value="Default" />
       <updated>1536588272399</updated>
     </task>
+    <task id="LOCAL-00001" summary="Arreglados algunos bugs y terminado el nivel tutorial">
+      <created>1536752315091</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1536752315091</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32786885" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32786885" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3295082" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.28196722" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -291,13 +298,23 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Arreglados algunos bugs y terminado el nivel tutorial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglados algunos bugs y terminado el nivel tutorial" />
+  </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="enemiesList" language="Python" />
-        <watch expression="nextLevel" language="Python" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/STARLINE.py</url>
+          <line>289</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -329,18 +346,6 @@
     <entry file="file://$PROJECT_DIR$/assets/sounds/animationSound.ogg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ship.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3072" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enemies.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1678">
-          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/images/ships/big/ship9.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -359,16 +364,6 @@
     <entry file="file://$PROJECT_DIR$/assets/images/ships/big/ship0.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/STARLINE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="272" column="32" selection-start-line="272" selection-start-column="32" selection-end-line="272" selection-end-column="32" />
-          <folding>
-            <element signature="e#153#179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/levels/fase1.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -385,15 +380,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/levels/tutorial.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="66" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
+        <state relative-caret-position="187">
+          <caret line="23" selection-start-line="23" selection-end-line="27" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/levels/pruebas.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="198">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ship.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/STARLINE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="284" selection-start-line="284" selection-end-line="284" />
+          <folding>
+            <element signature="e#153#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enemies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
