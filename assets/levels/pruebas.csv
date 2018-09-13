@@ -1,0 +1,5 @@
+player1;600;500
+player2;400;500
+2000;message;hola soy un mensaje;3000;500;200;50
+5000;bomb;500;800;-2;-2
+5500;alien;200;-100;2;2

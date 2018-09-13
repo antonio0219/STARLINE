@@ -350,7 +350,7 @@ def chooseShip():
                 playerChoose[num].goTo(XSELECTION[num],YSELECTION[num])
                 startAnimationChoose[num] = False
                 resetPressed()
-                shipIsOut = [False, False]
+                shipIsOut[num] = False
 
         if upPres[num] and not startAnimationChoose[num]:
             type[num] -= 1
