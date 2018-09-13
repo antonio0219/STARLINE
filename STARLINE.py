@@ -258,7 +258,6 @@ def inGame():
     global surface, levelList, enemiesList, actualMessage, nextLevel, state, rPressed, player, startTime, levelList, levelFile, levelReader, level
     if len(levelList)>0 : # Si quedan mensajes o enemigos por procesar
         while len(levelList)>0 and (GAME_TIME.get_ticks() - startTime > int(levelList[0][0])) and not player.isDead() and not player.isBlowUp(): # No añadimos nuevos enemigos si ya nos han matado
-            #if not player.isDead() and not player.isBlowUp() : # No añadimos nuevos enemigos si ya nos han matado
             if levelList[0][1] == 'message' : # Si hay que crear el nuevo mensaje
                 actualMessage = enemies.message(levelList[0][2], GAME_TIME.get_ticks(), levelList[0][3], levelList[0][4], levelList[0][5], levelList[0][6], pygame) # Creamos el mensaje
                 print('añadido mensaje en '+ str(GAME_TIME.get_ticks()))
