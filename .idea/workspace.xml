@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4356d5f1-1c5f-4b40-ac5d-08cb5d944dad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STARLINE.py" beforeDir="false" afterPath="$PROJECT_DIR$/STARLINE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.inkscape/STARLINE_DRAWS.svg" beforeDir="false" afterPath="$PROJECT_DIR$/.inkscape/STARLINE_DRAWS.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/config/config.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/config/config.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/levels/fase1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/fase1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/levels/pruebas.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/pruebas.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/background/backgroundPlanet.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/background/backgroundPlanet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/background/pause.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/levels/tutorial.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/levels/tutorial.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +38,8 @@
     <session id="-865956044">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.142" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.20" value="1" />
@@ -46,7 +47,7 @@
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.56" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,40 +69,40 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="327" />
-          <entry key="csv" value="2224" />
-          <entry key="py" value="331" />
-          <entry key="txt" value="100" />
+          <entry key="csv" value="2227" />
+          <entry key="py" value="343" />
+          <entry key="txt" value="153" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSV" value="2224" />
-          <entry key="PLAIN_TEXT" value="100" />
-          <entry key="Python" value="658" />
+          <entry key="CSV" value="2227" />
+          <entry key="PLAIN_TEXT" value="153" />
+          <entry key="Python" value="670" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/STARLINE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="345" column="79" lean-forward="true" selection-start-line="345" selection-start-column="79" selection-end-line="345" selection-end-column="79" />
+            <state relative-caret-position="306">
+              <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
               <folding>
                 <element signature="e#153#179#0" expanded="true" />
-                <marker date="1536873474906" expanded="true" signature="13749:13754" ph="..." />
+                <marker date="1536873715528" expanded="true" signature="13749:13754" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ship.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="12" column="92" lean-forward="true" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
+            <state relative-caret-position="204">
+              <caret line="12" column="92" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
               <folding>
                 <marker date="1536873518713" expanded="true" signature="1372:1381" ph="..." />
               </folding>
@@ -112,7 +113,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/enemies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
+            <state relative-caret-position="328">
               <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
@@ -121,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/levels/tutorial.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="-788">
+              <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -131,7 +132,7 @@
         <entry file="file://$PROJECT_DIR$/assets/config/config.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
+              <caret column="4" selection-start-column="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -140,7 +141,7 @@
         <entry file="file://$PROJECT_DIR$/assets/levels/pruebas.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -148,7 +149,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/levels/fase1.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1819">
+            <state relative-caret-position="17">
               <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
             </state>
           </provider>
@@ -173,10 +174,10 @@
         <option value="$PROJECT_DIR$/enemies.py" />
         <option value="$PROJECT_DIR$/assets/config/config.csv" />
         <option value="$PROJECT_DIR$/assets/levels/fase1.csv" />
-        <option value="$PROJECT_DIR$/assets/levels/tutorial.csv" />
         <option value="$PROJECT_DIR$/assets/levels/pruebas.csv" />
-        <option value="$PROJECT_DIR$/STARLINE.py" />
         <option value="$PROJECT_DIR$/ship.py" />
+        <option value="$PROJECT_DIR$/STARLINE.py" />
+        <option value="$PROJECT_DIR$/assets/levels/tutorial.csv" />
       </list>
     </option>
   </component>
@@ -274,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536850761446</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="arreglado el bug del selector de naves">
+      <created>1536873810679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1536873810679</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -306,7 +314,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Arreglados algunos bugs y terminado el nivel tutorial" />
     <MESSAGE value="Hecha la primera mision" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hecha la primera mision" />
+    <MESSAGE value="arreglado el bug del selector de naves" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglado el bug del selector de naves" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -392,58 +401,58 @@
     <entry file="file://$PROJECT_DIR$/assets/images/ships/big/ship0.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/levels/tutorial.csv">
+    <entry file="file://$PROJECT_DIR$/STARLINE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="306">
+          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding>
+            <element signature="e#153#179#0" expanded="true" />
+            <marker date="1536873715528" expanded="true" signature="13749:13754" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/config/config.csv">
+    <entry file="file://$PROJECT_DIR$/assets/levels/fase1.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
+        <state relative-caret-position="17">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/levels/pruebas.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/levels/fase1.csv">
+    <entry file="file://$PROJECT_DIR$/assets/config/config.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1819">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/levels/tutorial.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-788">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/enemies.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
+        <state relative-caret-position="328">
           <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ship.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="12" column="92" lean-forward="true" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
+        <state relative-caret-position="204">
+          <caret line="12" column="92" selection-start-line="12" selection-start-column="92" selection-end-line="12" selection-end-column="92" />
           <folding>
             <marker date="1536873518713" expanded="true" signature="1372:1381" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/STARLINE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="345" column="79" lean-forward="true" selection-start-line="345" selection-start-column="79" selection-end-line="345" selection-end-column="79" />
-          <folding>
-            <element signature="e#153#179#0" expanded="true" />
-            <marker date="1536873474906" expanded="true" signature="13749:13754" ph="..." />
           </folding>
         </state>
       </provider>
