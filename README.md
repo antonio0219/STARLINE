@@ -1,4 +1,4 @@
-# DOCUMENTACIÓN (COMO CREAR NIVELES)
+# DOCUMENTACIÓN (CÓMO CREAR NIVELES)
 + Lo primero que tendríamos que hacer es acceder al fichero config.csv, ubicado en *STARLINE/assets/config/config.csv*
 En la primera línea del fichero config.csv encontramos el número de la nave que está seleccionada por cada jugador. Hay un total de 11 naves y se pueden seleccionar desde el selector dentro del juego.
 En las líneas siguientes encontramos los niveles que están predefinidos en el juego (Ordenados según aparezcan en el juego), y están estructuradas de la siguiente manera:
@@ -34,7 +34,7 @@ Los mansajes requieren los siguientes parámetros:
         4000;message;¡Hola mundo!;5000;500;600;50
         ~~~
     
-    Los ovnis y los alien se crean de una forma muy similar, y requieren los siguientes parámetros:
+    Los ovnis y los alien se crean de una forma muy similar, y se requieren los siguientes parámetros:
     1. __El instante en milisegundos cuando se genere el enemigo__.
     2. __El tipo de enemigo que queremos crear__. Si queremos un ovni, escribimos *ovni*, y si queremos un alien, escribimos *alien*.
     3. __Coordenada en X__.
